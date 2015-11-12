@@ -1,9 +1,8 @@
 'use strict';
 
 import rx from 'rx';
+import servicesConfigStream from 'dashboard/stream/configuration/services';
 
-export default rx.Observable.return({
-    protocol: 'http',
-    hostname: 'afternoon-bayou-8221.herokuapp.com',
-    port: 80
+export default servicesConfigStream.map((config) => {
+    return config.abtest;
 });

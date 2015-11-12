@@ -1,0 +1,13 @@
+{
+    "abtest": {
+        "protocol": "http",
+        "hostname": "afternoon-bayou-8221.herokuapp.com",
+        "port": "80"
+    },
+
+    "userManagement": {
+        "protocol": "http",
+        "hostname": "cryptic-plains-9851.herokuapp.com",
+        "port": 80
+    }
+}

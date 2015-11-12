@@ -20,6 +20,7 @@ System.config({
     "core-js": "npm:core-js@1.2.5",
     "director": "npm:director@1.2.8",
     "events": "npm:events@1.1.0",
+    "json": "github:systemjs/plugin-json@0.1.0",
     "lodash": "npm:lodash@3.10.1",
     "react": "npm:react@0.14.2",
     "react-dom": "npm:react-dom@0.14.2",
