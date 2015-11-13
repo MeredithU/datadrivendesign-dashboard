@@ -7,10 +7,10 @@ import persistence from 'dashboard/storage/sessionStorage';
 import currentRouterStream from 'dashboard/stream/router/current';
 
 // Actions
-import createUserSession from 'dashboard/route/login/action/userSession/create';
+import createUserSession from 'dashboard/action/userSession/create';
 
 // Views
-import indexLoginView from 'dashboard/route/login/view/index';
+import indexLoginView from 'dashboard/view/login/index';
 
 
 export default function (route) {

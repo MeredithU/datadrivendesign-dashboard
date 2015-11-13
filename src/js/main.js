@@ -11,7 +11,8 @@ import containerStream from 'dashboard/stream/element/container';
 import routeChangeStream from 'dashboard/stream/router/routeChange';
 
 
-// Views
+// Controller
+import layoutController from 'dashboard/controller/layout/default'; 
 import Root from 'dashboard/view/Root';
 
 routeChangeStream.flatMapLatest((route) => {
@@ -21,6 +22,9 @@ routeChangeStream.flatMapLatest((route) => {
         return rx.Observable.fromPromise(promise)
             .flatMapLatest((observable) => {
                 return observable.default(route);
+            })
+            .flatMapLatest((page) => {
+                return layoutController(route, page);
             });
             
 

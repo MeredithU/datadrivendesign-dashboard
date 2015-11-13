@@ -2,12 +2,12 @@
 
 import React from 'react';
 
-export default function (reactElement) {
+export default function ({ user, page }) {
 
     return (
         <div>
-            Layout
-            {reactElement}
+            <header>{user.email}</header>
+            {page}
         </div>
 
     );

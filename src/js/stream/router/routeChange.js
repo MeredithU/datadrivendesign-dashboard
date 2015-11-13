@@ -1,41 +1,42 @@
 'use strict';
 
 import rx from 'rx';
+import _ from 'lodash';
+
+// filter
+import authFilter from 'dashboard/filters/auth';
 
 // Stream
 import currentRouterStream from 'dashboard/stream/router/current';
-import currentUserSessionStream from 'dashboard/stream/userSession/current';
 
 
 const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
 
+        function generateFilterHandler (filter) {
+            return function () {
+                const next = _.last(arguments);
+                return filter(next);
+            }
+        }
+
         return rx.Observable.create(function (o) {
             router.mount({
-                '': {
-                    on: function (next) {
+                '/': [generateFilterHandler(authFilter), function (a) {
+                    o.onNext({
+                        modulePath: 'dashboard/controller/home/index'
+                    });
+                }],
 
-                        currentUserSessionStream.first().subscribe((userSession) => {
-                            if (userSession === null) {
-                                router.setRoute('/login');
-                                next(false);
-                            }
-
-                            next();
-
-                        });
-                        
-                    },
-
-                    '/': function (a) {
-                        o.onNext({
-                            modulePath: 'dashboard/route/home/controller/index'
-                        });
-                    }
-                },
+                '/abtests/new': [generateFilterHandler(authFilter), function () {
+                    o.onNext({
+                        modulePath: 'dashboard/controller/abtests/new'
+                    })
+                }],
                 
                 '/login': function () {
                     o.onNext({
-                        modulePath: 'dashboard/route/login/controller/index'
+                        name: 'login',
+                        modulePath: 'dashboard/controller/login/index'
                     });
                 }
             });
@@ -43,12 +44,12 @@ const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
         });
 
     })
-    .map((route) => {
-        if (!route.params) {
-            route.params = {};
+    .map((request) => {
+        if (!request.params) {
+            request.params = {};
         }
 
-        return route;
+        return request;
     })
     .replay(undefined, 1);
 

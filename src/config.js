@@ -18,6 +18,7 @@ System.config({
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "core-js": "npm:core-js@1.2.5",
+    "davidturissini/datadrivendesign-calculator": "github:davidturissini/datadrivendesign-calculator@master",
     "director": "npm:director@1.2.8",
     "events": "npm:events@1.1.0",
     "json": "github:systemjs/plugin-json@0.1.0",
