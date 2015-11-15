@@ -8,7 +8,7 @@ import requestAbTest from 'dashboard/action/requestAbTest';
 import currentUserStream from 'dashboard/stream/user/current';
 import currentUserSessionStream from 'dashboard/stream/userSession/current';
 
-export default function (abtest) {
+export default function (abtest, groups) {
 
     const observable = rx.Observable.combineLatest(
             currentUserStream,
@@ -19,9 +19,14 @@ export default function (abtest) {
 
         ).flatMapLatest(({ user, userSession }) => {
 
+            const body = abtest.asJSON();
+            body.groups = groups.map(function (group) {
+                return group.asJSON();
+            });
+
             return requestAbTest(`/users/${user.id}/abtests`, {
                 method: 'POST',
-                body: JSON.stringify(abtest.asJSON()),
+                body: JSON.stringify(body),
                 headers: {
                     'x-auth-token': userSession.id
                 }

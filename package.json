@@ -13,11 +13,16 @@
       "baseURL": "src"
     },
     "dependencies": {
+      "abtest-calculator": "github:davidturissini/datadrivendesign-calculator@master",
+      "abtestcalculator": "github:davidturissini/datadrivendesign-calculator@master",
+      "classnames": "npm:classnames@^2.2.0",
+      "css": "npm:jspm-loader-css@1.0.0",
       "davidturissini/datadrivendesign-calculator": "github:davidturissini/datadrivendesign-calculator@master",
       "director": "npm:director@^1.2.8",
       "events": "npm:events@^1.1.0",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "lodash": "npm:lodash@^3.10.1",
+      "numeral": "npm:numeral@^1.5.3",
       "react": "npm:react@^0.14.2",
       "react-dom": "npm:react-dom@^0.14.2",
       "rx": "npm:rx@^4.0.6"

@@ -1,5 +1,8 @@
 'use strict';
 
+// CSS
+import css from './../css/main.css!';
+
 // External
 import React from 'react';
 import ReactDom from 'react-dom';

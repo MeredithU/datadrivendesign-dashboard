@@ -6,8 +6,14 @@ export default function ({ user, page }) {
 
     return (
         <div>
-            <header>{user.email}</header>
-            {page}
+            <header className="app-header container-fluid">
+                <div className="col-xs-4 col-sm-offset-8 text-right">
+                    {user.email}
+                </div>
+            </header>
+            <main className="app-page">
+                {page}
+            </main>
         </div>
 
     );

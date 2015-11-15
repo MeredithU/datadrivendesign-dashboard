@@ -1,0 +1,48 @@
+.app-header {
+    padding:15px;
+    border-bottom:1px solid #ccc;
+}
+
+.app-page {
+    padding:15px 0;
+}
+
+.form-abtest .input-group {
+    margin-bottom: 15px;
+}
+
+.abtestgroup-fields {
+    padding:15px;
+    border:1px solid #ccc;
+}
+
+.underline-hover:hover {
+    text-decoration: underline;
+}
+
+.abtestgroups-row {
+    margin-bottom:15px;
+}
+
+.submit-buttons {
+    padding:15px;
+    position: fixed;
+    left:0;
+    bottom:0;
+    right:0;
+    border-top:1px solid #ccc;
+}
+
+.form-header {
+    background:#eee;
+    margin-top:-15px;
+    margin-bottom:15px;
+}
+
+.form-group-abtest-title {
+    margin-bottom:15px;
+}
+
+.abtestgroup-title-input {
+    margin-bottom:15px;
+}

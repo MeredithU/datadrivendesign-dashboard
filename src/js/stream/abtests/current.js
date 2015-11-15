@@ -28,5 +28,12 @@ export default abtestServiceConfigStream.combineLatest(
             }
         };
 
+        return rx.Observable.interval(5000)
+            .map(() => {
+                return { urlConfig, params }
+            });
+    })
+
+    .flatMapLatest(({ urlConfig, params }) => {
         return requestUrl(urlConfig, params);
     });
