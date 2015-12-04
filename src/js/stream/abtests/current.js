@@ -8,32 +8,17 @@ import abtestServiceConfigStream from 'dashboard/stream/configuration/abtestServ
 import currentUserSessionStream from 'dashboard/stream/userSession/current';
 
 // Action
-import requestUrl from 'dashboard/action/requestUrl';
+import requestAbTest from 'dashboard/action/requestAbTest';
 
 
-export default abtestServiceConfigStream.combineLatest(
-        currentUserSessionStream,
-        function (config, userSession) {
-            return { config, userSession }
-        }
+export default currentUserSessionStream
+    .flatMapLatest((userSession) => {
+        const path = `/users/${userSession.user_id}/abtests`;
 
-    ).flatMapLatest(({ config, userSession }) => {
-        const urlConfig = _.clone(config);
-        urlConfig.pathname = `/users/${userSession.user_id}/abtests`;
-
-        const params = {
-            method: 'get',
-            headers: {
-                'x-auth-token': userSession.id
-            }
-        };
-
-        return rx.Observable.interval(5000)
-            .map(() => {
-                return { urlConfig, params }
-            });
+        console.log(path);
+        return requestAbTest(path, {
+            method: 'get'
+        });
     })
 
-    .flatMapLatest(({ urlConfig, params }) => {
-        return requestUrl(urlConfig, params);
-    });
+    .startWith(null);

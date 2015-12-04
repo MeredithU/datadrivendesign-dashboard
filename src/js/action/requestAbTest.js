@@ -15,11 +15,17 @@ import abTestServiceConfigStream from 'dashboard/stream/configuration/abtestServ
 
 export default function (path, params = {}) {
 
-    return abTestServiceConfigStream.flatMapLatest((config) => {
+    const obs = abTestServiceConfigStream.flatMapLatest((config) => {
+
         const urlConfig = _.clone(config);
         urlConfig.pathname = path;
 
         return requestUrl(urlConfig, params);
-    });
+    })
+    .replay(undefined, 1);
+
+    obs.connect();
+
+    return obs;
 
 };

@@ -15,7 +15,6 @@ export default function (route) {
     return currentRouterStream.flatMapLatest((router) => {
 
         const createAbTestHref = router.makeCreateAbTestHref();
-
         return currentAbtestsStream.map((abtests) => {
             return { abtests, router, createAbTestHref };
         });
@@ -23,6 +22,7 @@ export default function (route) {
     })
 
     .map((props) => {
+        console.log(props);
         return indexView(props);
     })
 

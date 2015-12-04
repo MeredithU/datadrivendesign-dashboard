@@ -1,13 +1,18 @@
 'use strict';
 
 import rx from 'rx';
+
+// Storage
 import persistence from 'dashboard/storage/sessionStorage';
+
+// Model
+import UserSession from 'dashboard/model/UserSession';
 
 // Streams
 import currentRouterStream from 'dashboard/stream/router/current';
 
-// Actions
-import createUserSession from 'dashboard/action/userSession/create';
+// Action
+import requestAbTest from 'dashboard/action/requestAbTest';
 
 // Views
 import indexLoginView from 'dashboard/view/login/index';
@@ -25,22 +30,23 @@ export default function (route) {
             viewData.errors = [];
             next();
 
-            createUserSession(viewData).first().subscribe(
-                function (userSession) {
+            const body = JSON.stringify({
+                username: viewData.email,
+                password: viewData.password
+            });
 
-                    currentRouterStream.subscribe((router) => {
-                        persistence.save('user-session', userSession);
-                        router.setRoute('/');
-                        o.onCompleted();
-                    });
-                    
-                },
+            requestAbTest('/userSession', {
+                method: 'post',
+                body
+            })
+            .subscribe((resp) => {
+                const sessionId = resp.data._id;
 
-                function (err) {
-                    viewData.errors.push(err.message);
-                    next();
-                }
-            );
+                const userSession = UserSession.create(resp.data);
+
+                persistence.save('user-session', userSession.asJSON());
+                window.location.hash = '#/';
+            })
         }
 
         function onPasswordChange (e) {
@@ -54,6 +60,7 @@ export default function (route) {
         }
 
         const viewData = {
+            registerHref:'#/register',
             email: '',
             password: '',
             onPasswordChange: onPasswordChange,

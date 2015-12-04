@@ -1,7 +1,7 @@
 'use strict';
 
-// CSS
-import css from './../css/main.css!';
+// Polyfill
+import fetchPolyfill from 'whatwg-fetch';
 
 // External
 import React from 'react';
@@ -20,12 +20,8 @@ import Root from 'dashboard/view/Root';
 
 routeChangeStream.flatMapLatest((route) => {
 
-        const promise = System.import(route.modulePath);
-
-        return rx.Observable.fromPromise(promise)
-            .flatMapLatest((observable) => {
-                return observable.default(route);
-            })
+        const module = route.module;
+        return module(route)
             .flatMapLatest((page) => {
                 return layoutController(route, page);
             });

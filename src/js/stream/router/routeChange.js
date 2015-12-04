@@ -10,6 +10,11 @@ import authFilter from 'dashboard/filters/auth';
 import currentRouterStream from 'dashboard/stream/router/current';
 
 
+import homeIndex from 'dashboard/controller/home/index';
+import loginIndex from 'dashboard/controller/login/index';
+import newAbtests from 'dashboard/controller/abtests/new';
+import registerIndex from 'dashboard/controller/user/new';
+
 const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
 
         function generateFilterHandler (filter) {
@@ -23,20 +28,27 @@ const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
             router.mount({
                 '/': [generateFilterHandler(authFilter), function (a) {
                     o.onNext({
-                        modulePath: 'dashboard/controller/home/index'
+                        module: homeIndex
                     });
                 }],
 
                 '/abtests/new': [generateFilterHandler(authFilter), function () {
                     o.onNext({
-                        modulePath: 'dashboard/controller/abtests/new'
+                        module: newAbtests
                     })
                 }],
                 
                 '/login': function () {
                     o.onNext({
                         name: 'login',
-                        modulePath: 'dashboard/controller/login/index'
+                        module: loginIndex
+                    });
+                },
+
+                '/register': function () {
+                    o.onNext({
+                        name: 'register',
+                        module: registerIndex
                     });
                 }
             });

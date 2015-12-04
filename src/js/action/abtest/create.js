@@ -24,7 +24,7 @@ export default function (abtest, groups) {
                 return group.asJSON();
             });
 
-            return requestAbTest(`/users/${user.id}/abtests`, {
+            return requestAbTest(`/users/${user.get('_id')}/abtests`, {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {

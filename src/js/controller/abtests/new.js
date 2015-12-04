@@ -84,7 +84,9 @@ export default function (route) {
         }
 
         function onAddGroupButtonClick () {
-            const abtestGroup = AbTestGroup.create();
+            const abtestGroup = AbTestGroup.create({
+                slug:''
+            });
             abtestGroup.set('distribution', 0);
             abtestGroups.push(abtestGroup);
             next();
@@ -103,7 +105,7 @@ export default function (route) {
             createAbTest(abtest, abtestGroups)
                 .subscribe(
                     function (resp) {
-                        window.location.hash = '/';
+                        //window.location.hash = '/';
                     },
 
                     function (err) {

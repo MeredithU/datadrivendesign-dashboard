@@ -12,6 +12,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
     "dashboard/*": "js/*.js",
+    "dashboard": "dashboard.js",
     "css/*": "css/*.js"
   },
 
@@ -32,6 +33,7 @@ System.config({
     "react": "npm:react@0.14.2",
     "react-dom": "npm:react-dom@0.14.2",
     "rx": "npm:rx@4.0.6",
+    "whatwg-fetch": "npm:whatwg-fetch@0.10.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
