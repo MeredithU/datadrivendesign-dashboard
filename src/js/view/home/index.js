@@ -5,38 +5,46 @@ import currentUserSessionStream from 'dashboard/stream/userSession/current';
 
 // stream
 
-export default function ({ createAbTestHref, abtests }) {
+export default function ({ abtests, createAbTestHref }) {
     let abtestsList;
 
     if (abtests !== null) {
-        abtestsList = abtests.map(function (abtest, index) {
+        abtestsList = abtests.map(function (abtestData, index) {
+            const abtest = abtestData.abtest;
+            const abtestGroups = abtestData.abtestGroups;
             const key = `abtest-${index}`;
             let totalReported = 0;
 
-            const groups = abtest.groups.map(function (group, groupIndex) {
+            const groups = abtestGroups.map(function (abtestGroupData, groupIndex) {
+                const group = abtestGroupData.abtestGroup;
+                const population = abtestGroupData.meta.impressions_count;
                 const key = `abtest-${abtest.id}-group-${groupIndex}`;
 
-                totalReported += group.population;
+                totalReported += population;
 
                 return (
                     <div className="col-xs-4" key={key}>
-                        <h4>{group.name}</h4>
-                        <div>Population: {group.population}</div>
-                        <div>Conversions: {group.conversions}</div>
+                        <h4>{group.get('name')}</h4>
+                        <div>Population: {population}</div>
+                        <div>Conversions: {abtestGroupData.meta.conversions_count}</div>
                     </div>
                 );
             });
 
-            const percentReported = Math.round((totalReported / abtest.sampleSize) * 100) / 100;
+            let percentReported = Math.round((totalReported / abtest.get('sampleSize')) * 100) / 100;
+
+            if (abtest.get('sampleSize') === 0) {
+                percentReported = 0;
+            }
 
             return (
                 <div key={key}>
-                    <h2>{abtest.name}</h2>
-                    <small>{abtest.id}</small>
-                    <div>Total Sample size: {abtest.sampleSize}</div>
+                    <h2>{abtest.get('name') || 'Untitled'}</h2>
+                    <small>{abtest.get('id')}</small>
+                    <div>Total Sample size: {abtest.get('sampleSize')}</div>
                     <div>Reported: {totalReported} ({percentReported}%)</div>
                     <div className="row clearfix">
-                        {groups}
+                       {groups}
                     </div>
                 </div>
             );

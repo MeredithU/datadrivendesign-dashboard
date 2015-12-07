@@ -2,9 +2,13 @@
 
 import rx from 'rx';
 
+// Action
+import requestAbTest from 'dashboard/action/requestAbTest';
+
 // Streams
 import currentAbtestsStream from 'dashboard/stream/abtests/current';
 import currentRouterStream from 'dashboard/stream/router/current';
+import currentUserSessionStream from 'dashboard/stream/userSession/current';
 
 // Views
 import indexView from 'dashboard/view/home/index';
@@ -16,13 +20,12 @@ export default function (route) {
 
         const createAbTestHref = router.makeCreateAbTestHref();
         return currentAbtestsStream.map((abtests) => {
-            return { abtests, router, createAbTestHref };
-        });
+                return { abtests, createAbTestHref };
+            })
 
     })
 
     .map((props) => {
-        console.log(props);
         return indexView(props);
     })
 

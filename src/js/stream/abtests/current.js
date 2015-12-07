@@ -4,21 +4,32 @@ import rx from 'rx';
 import _ from 'lodash';
 
 // Stream
-import abtestServiceConfigStream from 'dashboard/stream/configuration/abtestService';
 import currentUserSessionStream from 'dashboard/stream/userSession/current';
 
 // Action
 import requestAbTest from 'dashboard/action/requestAbTest';
 
+// Responses
+import abtestIndexResponse from 'dashboard/responses/abtest/index';
 
-export default currentUserSessionStream
-    .flatMapLatest((userSession) => {
-        const path = `/users/${userSession.user_id}/abtests`;
 
-        console.log(path);
-        return requestAbTest(path, {
-            method: 'get'
-        });
-    })
+function factory (userSessionStream) {
+    return userSessionStream.flatMapLatest((userSession) => {
+            const path = `/users/${userSession.user_id}/abtests`;
 
-    .startWith(null);
+            return requestAbTest(path, {
+                method: 'get',
+                headers: {
+                    authentication:`token ${userSession.user_id}:${userSession._id}`
+                }
+            });
+        })
+
+        .flatMapLatest((resp) => {
+            return abtestIndexResponse(resp).toArray();
+        })
+        .shareReplay(1);
+}
+
+export let createAbTestStream = factory;
+export default factory(currentUserSessionStream);

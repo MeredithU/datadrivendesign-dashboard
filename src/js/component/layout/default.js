@@ -3,7 +3,7 @@
 import React from 'react';
 
 export default function ({ user, page }) {
-
+    
     return (
         <div>
             <header className="app-header container-fluid">
