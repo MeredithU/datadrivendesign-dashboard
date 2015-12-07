@@ -31,7 +31,7 @@ export default function (route, page) {
         });
         
 
-    return rx.Observable.amb(noLayoutStream, layoutStream);
+    return rx.Observable.merge(noLayoutStream, layoutStream);
 
 
 }

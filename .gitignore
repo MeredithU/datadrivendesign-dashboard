@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
 npm-debug.log
-src/jspm_packages
-src/config/services.json
+public/jspm_packages
+public/config/services.json
