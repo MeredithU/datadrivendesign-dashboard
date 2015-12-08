@@ -8,8 +8,11 @@ import currentUserSessionStream from 'dashboard/stream/userSession/current';
 // Model
 import User from 'dashboard/model/user';
 
-// Action
-import requestAbTest from 'dashboard/action/requestAbTest';
+// Client
+import abtestServiceClient from 'dashboard/client/abtestService';
+
+// Request
+import getUserRequest from 'dashboard/request/user/get';
 
 
 function createCurrentUserStream (userSessionStream) {
@@ -20,8 +23,13 @@ function createCurrentUserStream (userSessionStream) {
             return userSession.id
         })
         .flatMapLatest((userSession) => {
+            const user = User.create({
+                id: userSession.get('user_id')
+            });
 
-            return requestAbTest(`/users/${userSession.user_id}`);
+            const request = getUserRequest(user);
+
+            return abtestServiceClient.send(request);
             
         })
         .flatMapLatest((resp) => {
@@ -37,8 +45,7 @@ function createCurrentUserStream (userSessionStream) {
                 o.onCompleted();
             });
         })
-        .replay(undefined, 1)
-        .refCount();
+        .shareReplay(1);
 }
 
 

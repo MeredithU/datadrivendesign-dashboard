@@ -2,9 +2,6 @@
 
 import rx from 'rx';
 
-// Action
-import requestAbTest from 'dashboard/action/requestAbTest';
-
 // Streams
 import currentAbtestsStream from 'dashboard/stream/abtests/current';
 import currentRouterStream from 'dashboard/stream/router/current';

@@ -2,13 +2,17 @@
 
 import rx from 'rx';
 
-import requestAbTest from 'dashboard/action/requestAbTest';
+// Client
+import abtestClient from 'dashboard/client/abtestService';
 
 // Stream
 import currentUserStream from 'dashboard/stream/user/current';
 import currentUserSessionStream from 'dashboard/stream/userSession/current';
 
-export default function (abtest, groups) {
+// Request
+import createAbTestRequest from 'dashboard/request/abtest/createAbTest';
+
+export default function (abtest, abtestGroups) {
 
     const observable = rx.Observable.combineLatest(
             currentUserStream,
@@ -19,18 +23,9 @@ export default function (abtest, groups) {
 
         ).flatMapLatest(({ user, userSession }) => {
 
-            const body = abtest.asJSON();
-            body.groups = groups.map(function (group) {
-                return group.asJSON();
-            });
+            const request = createAbTestRequest(userSession, user, abtest, abtestGroups);
 
-            return requestAbTest(`/users/${user.get('_id')}/abtests`, {
-                method: 'POST',
-                body: JSON.stringify(body),
-                headers: {
-                    'x-auth-token': userSession.id
-                }
-            });
+            return abtestClient.send(request);
 
         })
         .replay(undefined, 1);

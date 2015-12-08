@@ -40,9 +40,11 @@ export default function (route) {
                 body
             })
             .subscribe((resp) => {
-                const sessionId = resp.data._id;
 
-                const userSession = UserSession.create(resp.data);
+                const userSession = UserSession.create({
+                    id: resp.data.id,
+                    user_id: resp.data.relationships.user.id
+                });
 
                 persistence.save('user-session', userSession.asJSON());
                 window.location.hash = '#/';

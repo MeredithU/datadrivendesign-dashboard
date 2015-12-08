@@ -35,8 +35,8 @@ export default function (route, page) {
 
             function onLogoutClick (e) {
                 e.preventDefault();
-                const userSessionToken = userSession._id;
-                const userId = user.get('_id');
+                const userSessionToken = userSession.get('id');
+                const userId = user.get('id');
 
                 requestAbTest('/userSession', {
                     method: 'delete',
