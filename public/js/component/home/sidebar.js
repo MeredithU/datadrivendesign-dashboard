@@ -12,7 +12,7 @@ export default function ({ user, createAbTestHref }) {
             </div>
             <hr />
             <div>
-                <a className="btn btn-success" href={createAbTestHref}>Create new AB Test</a>
+                <a className="btn btn-success" href={createAbTestHref}>Create new A/B Test</a>
             </div>
         </div>
     );

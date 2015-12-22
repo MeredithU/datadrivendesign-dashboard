@@ -121,6 +121,39 @@ input[type=submit] {
     margin-bottom:10px;
 }
 
+.no-bullet {
+    list-style-type: none;
+}
+
+.no-bullet > li {
+    list-style-type: none;
+}
+
+.nav-docs {
+    padding-top:30px;
+}
+
+.main-docs {
+    border-left:1px solid #eee;
+}
+
+.figure-docs {
+    width:400px;
+    background:#eee;
+    padding:10px;
+    margin-left:30px;
+    margin-bottom:30px;
+}
+
+.figure-docs figcaption {
+    text-align:right;
+    padding:10px 0;
+}
+
+.figure-docs .image {
+    width:100%;
+}
+
 @media (max-width: 768px) {
     h1 {
         font-size:30px;

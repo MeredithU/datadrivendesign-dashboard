@@ -101,6 +101,14 @@ body {
     text-transform:capitalize;
 }
 
+.no-bullet {
+    list-style-type: none;
+}
+
+.no-bullet > li {
+    list-style-type: none;
+}
+
 .status-active {
     color:#5E8638;
 }
