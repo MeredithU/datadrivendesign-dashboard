@@ -29,6 +29,10 @@ const routerStream = rx.Observable.create(function (o) {
             return '#/abtests/new';
         };
 
+        router.makeShowAbTestHref = function (abtest) {
+            return `#/abtests/${abtest.abtest.get('id')}`;
+        };
+
         router.transitionToCreateAbTest = function () {
             const href = this.makeCreateAbTestHref().replace('#', '');
 

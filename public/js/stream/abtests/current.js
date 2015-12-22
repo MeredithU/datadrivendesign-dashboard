@@ -8,6 +8,7 @@ import User from 'dashboard/model/user';
 
 // Stream
 import currentUserSessionStream from 'dashboard/stream/userSession/current';
+import currentUser from 'dashboard/stream/user/current';
 
 // Client
 import abtestServiceClient from 'dashboard/client/abtestService';
@@ -20,13 +21,15 @@ import abtestIndexResponse from 'dashboard/responses/abtest/index';
 
 
 function factory (userSessionStream) {
-    return userSessionStream.flatMapLatest((userSession) => {
-            const user = User.create({
-                id: userSession.get('user_id')
-            });
-
+    return userSessionStream.combineLatest(
+            currentUser,
+            function (userSession, user) {
+                return { userSession, user }
+            }
+        )
+        .flatMapLatest(({ userSession, user }) => {
             const request = userGetAbTestsRequest(userSession, user);
-            
+
             return abtestServiceClient.send(request);
         })
 

@@ -21,7 +21,7 @@ System.config({
     "abtestcalculator": "github:davidturissini/datadrivendesign-calculator@master",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
-    "classnames": "npm:classnames@2.2.0",
+    "classnames": "npm:classnames@2.2.1",
     "core-js": "npm:core-js@1.2.5",
     "css": "npm:jspm-loader-css@1.0.0",
     "davidturissini/datadrivendesign-calculator": "github:davidturissini/datadrivendesign-calculator@master",
@@ -29,6 +29,7 @@ System.config({
     "events": "npm:events@1.1.0",
     "json": "github:systemjs/plugin-json@0.1.0",
     "lodash": "npm:lodash@3.10.1",
+    "moment": "npm:moment@2.10.6",
     "numeral": "npm:numeral@1.5.3",
     "react": "npm:react@0.14.2",
     "react-dom": "npm:react-dom@0.14.2",
@@ -93,7 +94,7 @@ System.config({
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
     },
-    "npm:classnames@2.2.0": {
+    "npm:classnames@2.2.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
@@ -188,6 +189,9 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:moment@2.10.6": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:numeral@1.5.3": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"

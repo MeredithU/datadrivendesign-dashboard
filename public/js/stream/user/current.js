@@ -14,17 +14,25 @@ import abtestServiceClient from 'dashboard/client/abtestService';
 // Request
 import getUserRequest from 'dashboard/request/user/get';
 
+import sessionStorage from 'dashboard/storage/sessionStorage';
 
 function createCurrentUserStream (userSessionStream) {
     return userSessionStream.filter((userSession) => {
-            return userSession
+            return userSession;
         })
         .distinctUntilChanged(function (userSession) {
-            return userSession.id
+            return userSession.get('id')
         })
-        .flatMapLatest((userSession) => {
+        .combineLatest(
+            sessionStorage,
+            function (userSession, sessionStorage) {
+                const userId = sessionStorage.getItem('user-id');
+                return { userSession, userId };
+            }
+        )
+        .flatMapLatest(({ userSession, userId }) => {
             const user = User.create({
-                id: userSession.get('user_id')
+                id: userId
             });
 
             const request = getUserRequest(user);

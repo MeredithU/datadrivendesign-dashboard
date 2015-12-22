@@ -3,6 +3,7 @@
         <meta charset="utf8" />
         <title>Data-Driven Design</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="/styles/main.css" type="text/css" />
         <!--
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -16,118 +17,9 @@
 
         </script>
         -->
-        <style>
-
-            html, body {
-                height:100%;
-            }
-
-            .section {
-                margin-bottom:20px;
-            }
-
-            .section .section-inner {
-                margin:0 auto;
-                max-width:1024px;
-                padding:0 40px;
-                position:relative;
-            }
-
-            .page-header {
-                margin-bottom:0;
-            }
-
-            .page-footer {
-                border-top:1px solid #ccc;
-                padding-top:20px;
-            }
-
-            .hero {
-
-                background: #004776; /* Old browsers */
-                background: -moz-linear-gradient(top, #004776 0%, #004e6a 100%); /* FF3.6+ */
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#004776), color-stop(100%,#004e6a)); /* Chrome,Safari4+ */
-                background: -webkit-linear-gradient(top, #004776 0%,#004e6a 100%); /* Chrome10+,Safari5.1+ */
-                background: -o-linear-gradient(top, #004776 0%,#004e6a 100%); /* Opera 11.10+ */
-                background: -ms-linear-gradient(top, #004776 0%,#004e6a 100%); /* IE10+ */
-
-                color:rgba(255, 255, 255, 0.95);
-
-                padding:40px 0;
-            }
-
-
-            h1 {
-                font-size:38px;
-            }
-
-
-            h1, h2, h3 {
-                line-height: 1.3;
-            }
-
-            form {
-                margin-top:40px;
-            }
-
-            form div {
-                padding:0 !important;
-            }
-
-            input[type=submit] {
-                color:#fff;
-                border:0;
-                margin-top:-1px;
-            }
-
-            .glyphicon {
-                font-size:48px;
-            }
-
-            .cell-icon {
-                margin-bottom:20px;
-            }
-
-            .thankyou {
-                color:#CEA145;
-            }
-
-            form input {
-                font-size:18px !important;
-            }
-
-            .page-header {
-                background:#fff;
-                color:#333;
-                margin-top:0;
-            }
-
-
-            @media (max-width: 768px) {
-                h1 {
-                    font-size:30px;
-                }
-
-                h3 {
-                    font-size:18px;
-                }
-
-                input[type=submit] {
-
-                    margin-top:10px;
-                    width:100%;
-                }
-            }
-        </style>
     </head>
     <body class="container-fluid">
-        <header class="page-header row section">
-            <div class="section-inner">
-                <header class="col-xs-12">
-                    <h1>Data-Driven Design</h1>
-                </header>
-            </div>
-        </header>
+        {{{header}}}
         <section class="section hero row">
             <div class="section-inner">
                 <div class="hero-inner col-xs-12 col-md-10">
@@ -135,22 +27,7 @@
                         <h1>Measure. Convert. Optimize. Repeat.</h1>
                     </header>
                     <h3>Introducing an A/B testing platform for mobile and web that lets you spend more time succeeding and less time wondering.</h3>
-                    <h3>Get started now</h3>
-                    
-                    <form id="loginform" class="clearfix">
-                        <div class="col-xs-12 col-sm-9">
-                            <input class="form-control" id="user-email" type="email" name="username" placeholder="e-mail address" />
-                        </div>
-                        <div class="col-xs-12 col-sm-9">
-                            <input class="form-control" id="user-password" type="password"placeholder="Password" />
-                        </div>
-                        <div class="col-xs-12 col-sm-9">
-                            <input class="form-control" id="user-confirm" type="password" placeholder="Confirm" />
-                        </div>
-                        <div class="col-xs-12 col-sm-3">
-                            <input class="btn btn-success pull-right" type="submit" value="Sign up" />
-                        </div>
-                    </form>
+                    <a href="/register" class="btn btn-success">Get started now</a>
                 </div>
             </div>
         </section>
@@ -209,7 +86,7 @@
                     return jQuery.ajax({
                         dataType: 'json',
                         contentType: 'application/json',
-                        url: 'http://localhost:4000/userSession',
+                        url: 'http://localhost:4000/usersessions',
                         method: 'POST',
                         data: JSON.stringify(userData)
                     })
@@ -220,13 +97,20 @@
 
                 .then(function (e) {
                     var userSessionData = e.data;
+                    var userSessionId = userSessionData.id;
+                    var userId = userSessionData.relationships.user.id;
 
-                    window.sessionStorage.setItem('user-session', JSON.stringify(userSessionData));
+                    window.sessionStorage.setItem('user-session', JSON.stringify({
+                        id: userSessionId
+                    }));
+
+                    window.sessionStorage.setItem('user-id', userId);
 
                     window.location.href = '/app/';
                 });
 
             });
+
         </script>
     </body>
 </html>

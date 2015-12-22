@@ -4,7 +4,10 @@ import React from 'react';
 import rx from 'rx';
 
 // Client
-import requestAbTest from 'dashboard/action/requestAbTest';
+import abtestServiceClient from 'dashboard/client/abtestService';
+
+// Request
+import deleteUserSessionRequest from 'dashboard/request/userSession/delete';
 
 // Stream
 import currentUserStream from 'dashboard/stream/user/current';
@@ -35,23 +38,20 @@ export default function (route, page) {
 
             function onLogoutClick (e) {
                 e.preventDefault();
-                const userSessionToken = userSession.get('id');
-                const userId = user.get('id');
+                user.set('id', user.get('_id'));
 
-                requestAbTest('/userSession', {
-                    method: 'delete',
-                    headers: {
-                        authentication: `token ${userId}:${userSessionToken}`
-                    }
-                })
-                .subscribe(
-                    function (resp) {
-                        console.log('success');
-                    },
-                    function (err) {
-                        console.log('error');
-                    }
-                );
+                const request = deleteUserSessionRequest(userSession, user);
+
+                abtestServiceClient.send(request)
+                    .subscribe(
+                        function (resp) {
+                            window.sessionStorage.clear();
+                            window.location.href = '/';
+                        },
+                        function (err) {
+                            console.log('error');
+                        }
+                    );
 
 
             }
@@ -67,7 +67,7 @@ export default function (route, page) {
                 ...props
             });
         })
-        
+
 
     return rx.Observable.merge(noLayoutStream, layoutStream);
 

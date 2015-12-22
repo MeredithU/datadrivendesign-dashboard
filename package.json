@@ -13,18 +13,19 @@
   "license": "ISC",
   "jspm": {
     "directories": {
-      "baseURL": "src"
+      "baseURL": "public"
     },
     "dependencies": {
       "abtest-calculator": "github:davidturissini/datadrivendesign-calculator@master",
       "abtestcalculator": "github:davidturissini/datadrivendesign-calculator@master",
-      "classnames": "npm:classnames@^2.2.0",
+      "classnames": "npm:classnames@^2.2.1",
       "css": "npm:jspm-loader-css@1.0.0",
       "davidturissini/datadrivendesign-calculator": "github:davidturissini/datadrivendesign-calculator@master",
       "director": "npm:director@^1.2.8",
       "events": "npm:events@^1.1.0",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "lodash": "npm:lodash@^3.10.1",
+      "moment": "npm:moment@^2.10.6",
       "numeral": "npm:numeral@^1.5.3",
       "react": "npm:react@^0.14.2",
       "react-dom": "npm:react-dom@^0.14.2",
@@ -42,6 +43,7 @@
     "jspm-server": "^1.0.1"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "mustache": "^2.2.1"
   }
 }

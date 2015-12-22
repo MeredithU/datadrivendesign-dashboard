@@ -37,7 +37,7 @@ const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
                         module: newAbtests
                     })
                 }],
-                
+
                 '/login': function () {
                     o.onNext({
                         name: 'login',

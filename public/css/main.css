@@ -1,6 +1,29 @@
+body {
+    color: #333;
+}
+
+.text-right {
+    text-align:right;
+}
+
+.text-center {
+    text-align:center;
+}
+
 .app-header {
     padding:15px;
     border-bottom:1px solid #ccc;
+}
+
+.app-title {
+    font-size:1.3em;
+    margin-bottom:0;
+    margin-top:0;
+}
+
+.app-title a,
+.app-title a:hover {
+    color:inherit;
 }
 
 .app-page {
@@ -45,4 +68,54 @@
 
 .abtestgroup-title-input {
     margin-bottom:15px;
+}
+
+.pad {
+    padding:10px;
+}
+
+.abtest-meta {
+    background:#eee;
+    font-size:1.3em;
+}
+
+.abtest-meta .day {
+    font-size:2em;
+}
+
+.abtest-title {
+    font-size:3.3em;
+    margin-bottom:20px;
+    margin-top:0;
+}
+
+.abtest-title small {
+    font-size:0.4em;
+}
+
+.abtest-row {
+    margin-bottom:40px;
+}
+
+.abtest-status {
+    text-transform:capitalize;
+}
+
+.status-active {
+    color:#5E8638;
+}
+
+.abtest-none {
+    border-bottom:1px solid #eee;
+    font-size:2.3em;
+}
+
+.abtest-none h4,
+.abtest-none h5 {
+    font-weight:normal;
+    font-size:1em;
+}
+
+.abtest-none h5 {
+    font-size:0.8em;
 }

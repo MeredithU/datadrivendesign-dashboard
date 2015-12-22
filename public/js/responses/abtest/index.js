@@ -5,6 +5,7 @@ import rx from 'rx';
 // Model
 import AbTest from 'dashboard/model/abtest';
 import AbTestGroup from 'dashboard/model/abtestGroup';
+import AbTestState from 'dashboard/model/abtestState';
 
 export default function (resp) {
     const indexResponse = [];
@@ -18,8 +19,10 @@ export default function (resp) {
 
             const abtest = abtestResponse.abtest = AbTest.create(attributes);
 
-            const abtestGroups = abtestResponse.abtestGroups = abtestData.relationships.abtestGroups.data.map((abtestGroupData) => {
-                const abtestGroup = AbTestGroup.create(abtestGroupData.data);
+            const abtestGroups = abtestResponse.abtestGroups = abtestData.relationships.abtestGroup.data.map((abtestGroupData) => {
+                const abtestGroup = AbTestGroup.create(abtestGroupData.attributes);
+                abtestGroup.set('id', abtestGroupData.id);
+
                 const meta = abtestGroupData.meta;
 
                 return {
@@ -27,6 +30,10 @@ export default function (resp) {
                     meta
                 }
             });
+
+            const abtestStateAttrs = abtestData.relationships.abtestState.data;
+            const abtestState = AbTestState.create(abtestStateAttrs);
+            abtestResponse.abtestState = abtestState;
 
             o.onNext(abtestResponse);
         });
