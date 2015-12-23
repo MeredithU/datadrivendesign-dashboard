@@ -4,6 +4,9 @@
         <title>Data-Driven Design</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <!--
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -24,12 +27,11 @@
             <nav class="nav-docs col-xs-3">
                 <ul class="nav-pills nav no-bullet">
                     <li><a href="#creating">Creating an A/B Test</a></li>
-                    <li><a href="#implementation">Implementing and A/B Test</a></li>
-                    <li><a href="#analyze">Analyzing Results</a></li>
+                    <li><a href="#implementation">Implementing an A/B Test</a></li>
                 </ul>
             </nav>
             <main class="main-docs col-xs-9">
-                <section id="creating">
+                <section class="chapter" id="creating">
                     <h2>Creating an A/B Test</h2>
                     <section class="clearfix">
                         <figure class="pull-right figure-docs">
@@ -81,8 +83,8 @@
                         <p>Once your fields are populated, click the "Save" button to create your A/B Test. You are now ready to integrate the A/B Test into your project.</p>
                     </section>
                 </section>
-                <section id="implementation">
-                    <h2>Implementing and A/B Test</h2>
+                <section class="chapter" id="implementation">
+                    <h2>Implementing an A/B Test</h2>
                     <section class="clearfix">
                         <figure class="pull-right figure-docs">
                             <img class="image" src="/public/images/docs/new_ab_tests_existing.png" />
@@ -115,9 +117,65 @@
                             <li>When <em>Participant</em> converts, send request to Data-Driven Design with <em>participant</em> id to record conversion.</li>
                         </ul>
                     </section>
-                </section>
-                <section id="analyze">
-                    <h2>Analyzing A/B Test results</h2>
+                    <section class="clearfix">
+                        <h3>Registering an impression</h3>
+                        <p>To create an impression, make a POST request to <code>http://api.datadrivendesign.co/abtests/YOUR_ABTEST_ID/impressions?api_key=YOUR_API_KEY</code>.</p>
+                        <p>The response will include a <code>data</code> attribute that has the following data:</p>
+                        <pre>
+                            <code class="json">
+            {
+                data: {
+                    type: 'abtestgroup',
+                    id: ABTESTGROUP_ID,
+                    attributes: {
+                        name: ABTESTGROUP_NAME,
+                        slug: ABTESTGROU_SLUG
+                    },
+                    relationships: {
+                        participant: {
+                            data: {
+                                attributes: {
+                                    key: PARTICIPANT_KEY
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+                            </code>
+                        </pre>
+                        <p>With the response above, you can determine what action to take based on the <code>data.id</code> or <code>data.attributes.slug</code>. The only difference between the two is the slug should be human readable.</p>
+                        <p>You should also grab the value found at <code>data.relationships.participant.data.attributes.key</code>. This is the key for the <em>participant</em> that was created with this impression. This should be saved somewhere so that it can be referenced with future impressions and conversions requests.</p>
+                        <p>If a <em>participant</em> object is found for a user, you can make an impression call again and pass the <em>participant key</em> with the request. Data Driven Design will see the key and return the A/B Test Group that the user is already a part of. You do not have to keep track and remember which A/B Test Group a user is a part of. An example request:</p>
+                        <p><code>POST http://api.datadrivendesign.co/abtests/YOUR_ABTEST_ID/impressions?api_key=YOUR_API_KEY</code></p>
+                        <pre>
+                            <code class="json">
+                                {
+                                    data: {
+                                        type: 'participant',
+                                        attributes: {
+                                            key: PARTICIPANT_KEY
+                                        }
+                                    }
+                                }
+                            </code>
+                        </pre>
+                    </section>
+                    <section class="clearfix">
+                        <h3>Registering a conversion</h3>
+                        <p>To register a conversion, make a POST request to <code>http://api.datadrivendesign.io/abtests/ABTEST_ID/conversions</code> with the following POST body:</p>
+                        <pre>
+                            <code class="json">
+                                {
+                                    data: {
+                                        type: 'participant',
+                                        id: PARTICIPANT_KEY
+                                    }
+                                }
+                            </code>
+                        </pre>
+                        <p>This will automatically create a conversion for that <em>participant</em> in that A/B Test Group. A <em>participant</em> can only be converted once. If a conversion request gets a <em>participant</em> more than once, a conversion will not be recorded.</p>
+                    </section>
                 </section>
             </main>
         </div>

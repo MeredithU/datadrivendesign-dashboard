@@ -154,6 +154,15 @@ input[type=submit] {
     width:100%;
 }
 
+.chapter {
+    margin-bottom:100px;
+}
+
+.chapter h2 {
+    font-size:3em;
+    margin-bottom:30px;
+}
+
 @media (max-width: 768px) {
     h1 {
         font-size:30px;
