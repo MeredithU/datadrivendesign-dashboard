@@ -5,6 +5,7 @@ const fs = require('fs');
 const port = 8888;
 const mustache = require('mustache')
 
+const apporigin = process.env.ABTEST_APP_ORIGIN;
 
 const app = express();
 
@@ -22,6 +23,7 @@ function loadDocument (path) {
             return new Promise(function (res, rej) {
                 fs.readFile(path, function (err, contents) {
                     var html = mustache.render(contents.toString(), {
+                        apporigin: apporigin,
                         header: header
                     });
                     res(html);

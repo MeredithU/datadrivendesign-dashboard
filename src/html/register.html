@@ -58,7 +58,7 @@
 
                 jQuery.ajax({
                     type: 'POST',
-                    url: '//localhost:4000/users',
+                    url: '//{{apporigin}}/users',
                     contentType: 'application/json',
                     dataType: 'json',
                     data: JSON.stringify({
@@ -75,7 +75,7 @@
 
                     return jQuery.ajax({
                         type: 'POST',
-                        url: '//localhost:4000/usersessions',
+                        url: '//{{apporigin}}/usersessions',
                         contentType: 'application/json',
                         dataType: 'json',
                         data: JSON.stringify({
