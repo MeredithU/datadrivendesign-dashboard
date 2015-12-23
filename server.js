@@ -5,7 +5,7 @@ const fs = require('fs');
 const port = 8888;
 const mustache = require('mustache')
 
-const apporigin = process.env.ABTEST_APP_ORIGIN;
+const apporigin = process.env.DASHBOARD_ABTEST_APP_ORIGIN;
 
 const app = express();
 

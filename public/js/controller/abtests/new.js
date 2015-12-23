@@ -101,11 +101,11 @@ export default function (route) {
 
         function onSubmit (e) {
             e.preventDefault();
-            
+
             createAbTest(abtest, abtestGroups)
                 .subscribe(
                     function (resp) {
-                        //window.location.hash = '/';
+                        window.location.hash = '/';
                     },
 
                     function (err) {

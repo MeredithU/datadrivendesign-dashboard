@@ -12,9 +12,9 @@ export default function ({ dropdownClick, dropDownOpen, user, page, onLogoutClic
         <div>
             <header className="app-header container-fluid">
                 <h1 className="app-title col-xs-6">
-                    <a href="/#/">Data Driven Design</a>
+                    <a href="/_/#/">Data Driven Design</a>
                 </h1>
-                <div className="col-xs-4 col-sm-offset-2 text-right">
+                <div className="pull-right">
                     <ul className="nav nav-pills">
                         <li><a href={documentationHref}>API Documentation</a></li>
                         <li className={dropdownClassName}>
