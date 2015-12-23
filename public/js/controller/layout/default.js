@@ -12,6 +12,7 @@ import deleteUserSessionRequest from 'dashboard/request/userSession/delete';
 // Stream
 import currentUserStream from 'dashboard/stream/user/current';
 import currentUserSessionStream from 'dashboard/stream/userSession/current';
+import currentRouterStream from 'dashboard/stream/router/current';
 
 // Component
 import defaultLayout from 'dashboard/component/layout/default';
@@ -62,6 +63,31 @@ export default function (route, page) {
                 onLogoutClick
             }
         })
+        .flatMapLatest((props) => {
+            return currentRouterStream.map((router) => {
+                props.documentationHref = router.makeDocumentationHref();
+                return props;
+            });
+        })
+        .flatMapLatest((props) => {
+            props.dropDownOpen = false;
+
+            return rx.Observable.create(function (o) {
+                function next () {
+                    o.onNext(props);
+                }
+
+                props.dropdownClick = function (e) {
+                    e.preventDefault();
+                    props.dropDownOpen = !props.dropDownOpen;
+                    next();
+                };
+
+                next();
+
+            });
+        })
+
         .map((props) => {
             return defaultLayout({
                 ...props

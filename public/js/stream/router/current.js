@@ -39,6 +39,10 @@ const routerStream = rx.Observable.create(function (o) {
             router.setRoute(href);
         };
 
+        router.makeDocumentationHref = function () {
+            return '/documentation';
+        };
+
         return router;
 
     })
