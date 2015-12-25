@@ -6,7 +6,7 @@ import rx from 'rx';
 import persistence from 'dashboard/storage/sessionStorage';
 
 // Model
-import UserSession from 'dashboard/model/UserSession';
+import UserSession from 'dashboard/model/userSession';
 
 // Streams
 import currentRouterStream from 'dashboard/stream/router/current';
