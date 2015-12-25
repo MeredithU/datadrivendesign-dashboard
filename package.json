@@ -39,11 +39,11 @@
     }
   },
   "devDependencies": {
-    "jspm": "^0.16.14",
     "jspm-server": "^1.0.1"
   },
   "dependencies": {
     "express": "^4.13.3",
+    "jspm": "^0.16.19",
     "mustache": "^2.2.1"
   }
 }
