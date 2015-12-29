@@ -14,10 +14,14 @@ a:hover {
     margin-bottom:20px;
 }
 
+.site-title {
+    font-size:1.7em;
+}
+
 .section .section-inner {
     margin:0 auto;
     max-width:1024px;
-    padding:0 40px;
+    padding:0 20px;
     position:relative;
 }
 
@@ -104,7 +108,7 @@ form input {
 }
 
 .header-nav {
-    margin-top:34px;
+    margin-top:19px;
 }
 
 .user-form > div {

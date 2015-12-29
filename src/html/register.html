@@ -113,7 +113,7 @@
                     window.sessionStorage.setItem('user-id', userid);
                     window.location.href = '/_/';
                 })
-                .catch(function (err) {
+                .then(null, function (err) {
                     handleError(err);
                 });
 
