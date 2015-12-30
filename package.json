@@ -7,7 +7,9 @@
     "build": "npm run clean && jspm bundle-sfx --skip-source-maps ./src/dashboard.js ./../dashboard-dist/dashboard.js && cp src/index.html ../dashboard-dist/app.html && cp -R ./src/css ../dashboard-dist/css && cp ./src/jspm_packages/system.js ../dashboard-dist/jspm_packages/system.js && cp src/config.js ../dashboard-dist/config.js",
     "clean": "rm -rf ./dist",
     "start": "forever start --spinSleepTime 10000 server.js",
-    "postinstall": "jspm install"
+    "postinstall": "jspm install",
+    "stop": "forever stop ./server.js",
+    "restart": "npm run stop && npm start"
   },
   "author": "",
   "license": "ISC",

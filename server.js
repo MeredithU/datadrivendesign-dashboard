@@ -17,18 +17,31 @@ function loadHeader () {
     });
 };
 
+function loadFooter () {
+    return new Promise(function (resolve, rej) {
+        fs.readFile(`${__dirname}/src/partial/_footer.html`, function (err, contents) {
+            resolve(contents.toString());
+        })
+    });
+};
+
 function loadDocument (path) {
     return loadHeader()
         .then(function (header) {
-            return new Promise(function (res, rej) {
-                fs.readFile(path, function (err, contents) {
-                    var html = mustache.render(contents.toString(), {
-                        apporigin: apporigin,
-                        header: header
+
+            return loadFooter()
+                .then(function (footer) {
+                    return new Promise(function (res, rej) {
+                        fs.readFile(path, function (err, contents) {
+                            var html = mustache.render(contents.toString(), {
+                                apporigin: apporigin,
+                                header: header,
+                                footer: footer
+                            });
+                            res(html);
+                        })
                     });
-                    res(html);
-                })
-            });
+                });
         });
 }
 
@@ -49,6 +62,10 @@ app.get('/login', function (req, res) {
 
 app.get('/register', function (req, res) {
     renderDocument(`${__dirname}/src/html/register.html`, res);
+});
+
+app.get('/pricing', function (req, res) {
+    renderDocument(`${__dirname}/src/html/pricing.html`, res);
 });
 
 app.get('/documentation', function (req, res) {

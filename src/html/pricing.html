@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta charset="utf8" />
+        <title>Data-Driven Design</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-20511675-2', 'auto');
+          ga('send', 'pageview');
+          ga('set', 'bucket', '<?php echo $bucket; ?>');
+
+        </script>
+        <meta name="google-site-verification" content="4ODuf6ohEocPIaa1HQyyBW_NeaXDalp6SLzAd-LeR_s" />
+    </head>
+    <body class="container-fluid">
+        {{{header}}}
+        <section class="section hero row">
+            <div class="section-inner">
+                <h1 class="text-center">$39.99</h1>
+                <h4 class="text-center">per 1,000 unique impressions</h4>
+                <p>Pay only for what you use. No matter what. Our simple pricing structure allows you to focus on running experiments, or not, without worrying about making a monthly payment. Only pay for what you use when you use it.</p>
+                <div>
+                    <h4>Features</h4>
+                    <ul>
+                        <li>No limit to number of A/B tests you can run.</li>
+                        <li>No limit on the amount of traffic.</li>
+                        <li>Easily integrates into existing websites and apps.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        {{{footer}}}
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            jQuery('#loginform').submit(function (e) {
+                e.preventDefault();
+
+                const userData = {
+                    username: jQuery('#user-email').val(),
+                    password: jQuery('#user-password').val(),
+                    confirm: jQuery('#user-confirm').val()
+                };
+
+                jQuery.ajax({
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    url: '//{{apporigin}}/users',
+                    method: 'POST',
+                    data: JSON.stringify(userData)
+                })
+                .then(function (e) {
+
+                    return jQuery.ajax({
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        url: '//{{apporigin}}/usersessions',
+                        method: 'POST',
+                        data: JSON.stringify(userData)
+                    })
+
+                }, function (e) {
+                    console.log('error', e);
+                })
+
+                .then(function (e) {
+                    var userSessionData = e.data;
+                    var userSessionId = userSessionData.id;
+                    var userId = userSessionData.relationships.user.id;
+
+                    window.sessionStorage.setItem('user-session', JSON.stringify({
+                        id: userSessionId
+                    }));
+
+                    window.sessionStorage.setItem('user-id', userId);
+
+                    window.location.href = '/app/';
+                });
+
+            });
+
+        </script>
+    </body>
+</html>
