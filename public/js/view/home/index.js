@@ -18,11 +18,11 @@ export default function ({ abtests, user, createAbTestHref, classNames }) {
         const sidebar = HomeSidebar({ user, createAbTestHref });
         body = (
             <div className="row">
-                <div className="col-xs-9">
-                    {list}
-                </div>
-                <div className="col-xs-3">
+                <div className="col-xs-12 col-sm-push-9 col-sm-3">
                     {sidebar}
+                </div>
+                <div className="col-xs-12 col-sm-pull-3 col-sm-9">
+                    {list}
                 </div>
             </div>
         );
@@ -31,7 +31,7 @@ export default function ({ abtests, user, createAbTestHref, classNames }) {
     }
 
     return (
-        <div className="container-fluid clearfix">
+        <div className="clearfix">
             {body}
         </div>
     );

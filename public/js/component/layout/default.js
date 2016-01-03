@@ -4,19 +4,17 @@ import React from 'react';
 import cx from 'classnames';
 
 export default function ({ dropdownClick, dropDownOpen, user, page, onLogoutClick, documentationHref }) {
-    const dropdownClassName = cx('pull-right dropdown', {
+    const dropdownClassName = cx('dropdown col-xs-6', {
         open: dropDownOpen
     });
 
     return (
         <div>
-            <header className="app-header container-fluid">
-                <h1 className="app-title col-xs-6">
-                    <a href="/_/#/">Data Driven Design</a>
-                </h1>
-                <div className="pull-right">
-                    <ul className="nav nav-pills">
-                        <li><a href={documentationHref}>API Documentation</a></li>
+            <header className="bg-blue page-header app-header section clearfix">
+                <h1 className="site-title col-sm-4"><a href="/_/#/"><span className="logo"></span><span>Turissini Technologies, LLC</span></a></h1>
+                <nav className="header-nav col-sm-8 col-xs-12">
+                    <ul className="no-bullet row text-right">
+                        <li className="col-xs-6"><a href={documentationHref}>API Documentation</a></li>
                         <li className={dropdownClassName}>
                             <a href="#" onClick={dropdownClick} className="dropdown-toggle">
                                 <span>
@@ -29,9 +27,9 @@ export default function ({ dropdownClick, dropDownOpen, user, page, onLogoutClic
                             </ul>
                         </li>
                     </ul>
-                </div>
+                </nav>
             </header>
-            <main className="app-page">
+            <main className="app-page bg-white">
                 {page}
             </main>
         </div>

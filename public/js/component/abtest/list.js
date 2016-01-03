@@ -49,12 +49,14 @@ export default function ({ abtests, classNames }) {
 
             return (
                 <div className={classnames} key={key}>
-                    <div className="col-md-2 abtest-meta text-center pad">
-                        <h5 className="month">{created.format('MMM')}</h5>
-                        <h4 className="day">{created.format('DD')}</h4>
-                        <h6 className={activeClassname}>{abtestState.get('status')}</h6>
+                    <div className="col-xs-2 abtest-meta text-center pad">
+                        <div className="abtest-meta-content">
+                            <h5 className="month">{created.format('MMM')}</h5>
+                            <h4 className="day">{created.format('DD')}</h4>
+                            <h6 className={activeClassname}>{abtestState.get('status')}</h6>
+                        </div>
                     </div>
-                    <div className="col-md-10 abtest-main pad">
+                    <div className="col-xs-offset-2 col-xs-10 abtest-main pad">
                         <h2 className="abtest-title">{abtestTitle} <small>({abtest.get('id')})</small></h2>
                         <div className="row">
                             <div className="col-xs-6">Runs until {abtest.get('sampleSize')} impressions.</div>
@@ -68,7 +70,7 @@ export default function ({ abtests, classNames }) {
     }
 
     return (
-        <div className="container-fluid clearfix">
+        <div className="clearfix">
             {abtestsList}
         </div>
     );

@@ -12,8 +12,9 @@ export default function ({ user, createAbTestHref }) {
             </div>
             <hr />
             <div>
-                <a className="btn btn-success" href={createAbTestHref}>Create new A/B Test</a>
+                <a className="btn btn-primary" href={createAbTestHref}>Create new A/B Test</a>
             </div>
+            <hr className="visible-xs" />
         </div>
     );
 

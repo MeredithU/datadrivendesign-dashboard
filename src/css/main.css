@@ -1,13 +1,36 @@
+/* http://colorschemedesigner.com/csd-3.5/#3C21Tw0w0w0w0 */
 html, body {
+    background:#fff;
+    color: #333;
+    font-size:16px;
     height:100%;
 }
 
-a {
-    color:#5cb85c;
+.bg-blue {
+    background:rgb(0, 32, 74);;
+    color:#fff;
 }
 
-a:hover {
-    color:#5cb85c;
+.bg-blue a, .bg-blue a:active, .bg-blue a:focus {
+    color:#fff;
+}
+
+.bg-blue a:hover {
+    color:#ffe140;
+}
+
+
+a, a:active, a:focus {
+    color:rgb(0, 32, 74);
+}
+
+.color-compliment {
+    color: #ffe140;
+}
+
+.inline-block-list li {
+    display: inline-block;
+    padding:0 20px;
 }
 
 .section {
@@ -15,7 +38,8 @@ a:hover {
 }
 
 .site-title {
-    font-size:1.7em;
+    font-size:1em;
+    margin-top:4px;
 }
 
 .section .section-inner {
@@ -26,26 +50,20 @@ a:hover {
 }
 
 .page-header {
+    padding-top:27px;
     margin-bottom:0;
 }
 
-.page-footer {
-    border-top:1px solid #ccc;
-    padding-top:20px;
+.page-header.app-header {
+    margin-top:0;
+    padding-bottom:5px;
+    padding-top:0;
 }
 
-.hero {
-
-    background: #004776; /* Old browsers */
-    background: -moz-linear-gradient(top, #004776 0%, #004e6a 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#004776), color-stop(100%,#004e6a)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #004776 0%,#004e6a 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #004776 0%,#004e6a 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #004776 0%,#004e6a 100%); /* IE10+ */
-
-    color:rgba(255, 255, 255, 0.95);
-
-    padding:40px 0;
+.page-footer {
+    padding-top:20px;
+    margin-bottom:0;
+    padding-bottom:20px;
 }
 
 .section-border-bottom {
@@ -55,7 +73,7 @@ a:hover {
 
 
 .hero .btn {
-    font-size:1.4em;
+    font-size:0.5em;
     margin-top:25px;
 }
 
@@ -68,20 +86,11 @@ h1 a {
 }
 
 h1 a:hover {
-    color:inherit;
     text-decoration:none;
 }
 
 h1, h2, h3 {
     line-height: 1.3;
-}
-
-form {
-    margin-top:40px;
-}
-
-form div {
-    padding:0 !important;
 }
 
 input[type=submit] {
@@ -98,8 +107,37 @@ input[type=submit] {
     margin-bottom:20px;
 }
 
+.cell-icon .image {
+    width:100%;
+}
+
 .thankyou {
     color:#CEA145;
+}
+
+.site-title .logo {
+    font-size:2em;
+}
+
+.logo {
+    position:relative;
+    padding-right:1em;
+}
+
+.logo:before {
+    content: "T";
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.logo:after {
+    content: "T";
+    display:block;
+    transform:rotateX(180deg);
+    position:absolute;
+    top:0.23em;
+    left:0.23em;
 }
 
 form input {
@@ -107,13 +145,26 @@ form input {
 }
 
 .page-header {
-    background:#fff;
-    color:#333;
+    border-bottom:0;
     margin-top:0;
 }
 
 .header-nav {
     margin-top:19px;
+}
+
+.btn-primary  {
+    background-color:#4284d3;
+    border-color:#4284d3;
+}
+
+.btn-primary:hover {
+    background-color:#274e7d;
+    border-color:#274e7d;
+}
+
+.header-nav .btn {
+    margin-top:-4px;
 }
 
 .user-form > div {
@@ -124,13 +175,17 @@ form input {
     text-align:right;
 }
 
+.text-center {
+    text-align:center;
+}
+
 input[type=submit] {
-    margin-top:-10px;
     vertical-align: bottom;
-    margin-bottom:10px;
 }
 
 .no-bullet {
+    padding-left:0;
+    margin-left:0;
     list-style-type: none;
 }
 
@@ -172,7 +227,46 @@ input[type=submit] {
     margin-bottom:30px;
 }
 
-@media (max-width: 768px) {
+.page-index .hero {
+    font-size:3.2em;
+    padding:30px 0 100px;
+    position:relative;
+    z-index:10;
+}
+
+.page-index .hero .logo {
+    display:block;
+    margin:-20px auto 0;
+    font-size:4em;
+    width:1em;
+}
+
+.page-index .main .glyphicon {
+    font-size:96px;
+}
+
+.page-index .main .section-title {
+    font-size:2.2rem;
+}
+
+.main {
+    padding:50px 0;
+}
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+    .page-index .hero {
+        font-size:2em;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 481px) and (max-width : 767px) {
+    .page-index .hero {
+        font-size:2.5em;
+    }
+
     h1 {
         font-size:30px;
     }
@@ -186,4 +280,16 @@ input[type=submit] {
         margin-top:10px;
         width:100%;
     }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+    .page-index .hero {
+        font-size:3em;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
 }

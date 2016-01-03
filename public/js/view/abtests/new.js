@@ -12,7 +12,7 @@ export default function ({ onGroupSlugChange, onGroupDistributionValueChange, on
 
     const groupsMarkup = abtestGroups.map(function (abtestGroup, index) {
         const key = `abtestgroup-${index}`;
-        
+
         function handleRemove () {
             onRemoveAbTestGroupClick(abtestGroup);
         }
@@ -28,8 +28,8 @@ export default function ({ onGroupSlugChange, onGroupDistributionValueChange, on
 
     return (
         <div>
-            
-            <form className="form-abtest container-fluid" onSubmit={onSubmit}>
+
+            <form className="form-abtest" onSubmit={onSubmit}>
                 <header className="form-header row">
                     <div className="col-xs-12">
                         <h2 className="form-title">Create new AB Test</h2>
@@ -67,14 +67,14 @@ export default function ({ onGroupSlugChange, onGroupDistributionValueChange, on
                 <section className="row abtestgroups-row">
                     {groupsMarkup}
                 </section>
-                
-                <div className="row">
+
+                <div>
                     <div className="col-xs-2 col-xs-offset-10 text-right">
                         <span onClick={onAddGroupButtonClick} className="btn btn-primary">Add Group</span>
                     </div>
                 </div>
 
-                <div className="submit-buttons text-right">
+                <div className="bg-white submit-buttons text-right">
                     <input type="submit" className="btn btn-primary" value="Save" />
                 </div>
             </form>

@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf8" />
         <title>Data-Driven Design</title>
@@ -17,51 +18,44 @@
         </script>
         <meta name="google-site-verification" content="4ODuf6ohEocPIaa1HQyyBW_NeaXDalp6SLzAd-LeR_s" />
     </head>
-    <body class="container-fluid">
+    <body class="page-index">
         {{{header}}}
-        <section class="section hero row">
-            <div class="section-inner">
-                <div class="hero-inner col-xs-12 col-md-10">
-                    <header>
-                        <h1>Measure. Convert. Optimize. Repeat.</h1>
-                    </header>
-                    <h3>Flexible and easy-to-use A/B testing platform to optimize your mobile and web campaigns.</h3>
-                    <a href="/register" class="btn btn-success">Get started now</a>
+        <section class="section hero bg-blue">
+            <div class="section-inner row">
+                <div class="col-sm-4 hidden-xs text-center">
+                    <div class="logo color-compliment"></div>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <ul class="no-bullet">
+                        <li><strong class="color-compliment">A/B Testing</strong> Samples</li>
+                        <li><strong class="color-compliment">Convert</strong> Sales</li>
+                        <li><strong class="color-compliment">Measure</strong> Marketing</li>
+                        <li><strong class="color-compliment">Repeat</strong> Results</li>
+                    </ul>
                 </div>
             </div>
         </section>
-        <section class="section row clearfix">
-            <div class="section-inner">
-                <aside class="col-xs-12 col-sm-4">
-                    <div class="cell-icon">
-                        <i class="glyphicon glyphicon-stats"></i>
-                    </div>
-                    <h4>Optimize your Analytics</h4>
-                    <p>Go beyond your numbers by experimenting with ways to optimize your numbers. Stop wondering if you are maximizing your conversions and get numbers to back it up! Our A/B Testing tech allows you to optimize your apps.</p>
-                </aside>
-                <aside class="col-xs-12 col-sm-4">
-                    <div class="cell-icon">
-                        <i class="glyphicon glyphicon-send"></i>
-                    </div>
-                    <h4>Interpret your results</h4>
-                    <p>Eliminate guessing with clear and fast reporting. With our clean charts and fast e-mail updates you'll always know how your tests are performing and where you can make further optimizations.</p>
-                </aside>
-                <aside class="col-xs-12 col-sm-4">
-                    <div class="cell-icon">
-                        <i class="glyphicon glyphicon-time"></i>
-                    </div>
-                    <h4>Get your data fast</h4>
-                    <p>Why wait around for the results of your A/B tests? Get real-time reports delivered as results come in. The more time you have to wait to get your results, the less time you know if your app is optimized. Get your data delivered quickly.</p>
-                </aside>
-            </div>
-        </section>
-        <header class="page-footer row section">
-            <div class="section-inner">
-                <div class="col-xs-12 text-right">
-                    © 2015 Turissini Technologies, LLC
+        <main class="main row clearfix">
+            <section class="section clearfix">
+                <div class="section-inner">
+                    <section class="col-xs-12 col-sm-4">
+                        <h4 class="section-title">Optimize your Analytics</h4>
+                        <p>Go beyond your numbers by experimenting with ways to optimize your numbers. Stop wondering if you are maximizing your conversions and get numbers to back it up! Our A/B Testing tech allows you to optimize your apps.</p>
+                    </section>
+
+                    <section class="col-xs-12 col-sm-4">
+                        <h4 class="section-title">See the big picture</h4>
+                        <p>Eliminate guessing with clear and fast reporting. With our clean charts and fast e-mail updates you'll always know how your tests are performing and where you can make further optimizations.</p>
+                    </section>
+
+                    <section class="col-xs-12 col-sm-4">
+                        <h4 class="section-title">Get your data fast</h4>
+                        <p>Why wait around for the results of your A/B tests? Get real-time reports delivered as results come in. The more time you have to wait to get your results, the less time you know if your app is optimized. Get your data delivered quickly.</p>
+                    </section>
                 </div>
-            </div>
-        </header>
+            </section>
+        </main>
+        {{{footer}}}
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script>
             jQuery('#loginform').submit(function (e) {
