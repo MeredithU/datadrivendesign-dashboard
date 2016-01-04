@@ -20,29 +20,32 @@
     </head>
     <body>
         {{{header}}}
-        <section class="section row">
+        <section class="section">
             <div class="section-inner">
-                <header class="col-xs-6 col-xs-offset-3 section-border-bottom">
-                    <h1>Log in to your account</h1>
+                <header class="clearfix">
+                    <h1>Sign in</h1>
                 </header>
-                <form class="form-login col-xs-6 col-xs-offset-3 user-form" id="login-form">
-                    <div>
-                        <label>E-mail address</label>
-                        <input id="email-input" class="form-control" type="email" />
-                    </div>
-                    <div>
-                        <label>Password</label>
-                        <input id="password-input" class="form-control" type="password" />
-                    </div>
-                    <div class="form-errors"></div>
-                    <div class="text-right pull-right col-xs-6">
-                        <input class="btn btn-primary col-xs-12" type="Submit" value="Log in" />
+                <hr />
+                <section>
+                    <form class="form-login user-form" id="login-form">
                         <div>
-                            <a class="link-register" href="/register">New user? Register</a>
+                            <label>E-mail address</label>
+                            <input id="email-input" class="form-control" type="email" />
                         </div>
+                        <div>
+                            <label>Password</label>
+                            <input id="password-input" class="form-control" type="password" />
+                        </div>
+                        <div class="form-errors"></div>
+                        <div class="text-right pull-right col-xs-6">
+                            <input class="btn btn-primary col-xs-12" type="Submit" value="Log in" />
+                            <div>
+                                <a class="link-register" href="/register">New user? Register</a>
+                            </div>
 
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </section>
             </div>
         </section>
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>

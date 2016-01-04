@@ -54,14 +54,15 @@ a, a:active, a:focus {
 }
 
 .page-header {
-    padding-top:27px;
+    padding-top:0;
     margin-bottom:0;
+    padding-bottom:5px;
+    margin-top:0;
 }
 
-.page-header.app-header {
-    margin-top:0;
-    padding-bottom:5px;
-    padding-top:0;
+.page-index .page-header {
+    padding-top:27px;
+    padding-bottom:9px;
 }
 
 .page-footer {
@@ -262,7 +263,7 @@ input[type=submit] {
 }
 
 .main {
-    padding:50px 0;
+    padding:0 0 50px 0;
 }
 
 
