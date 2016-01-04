@@ -11,7 +11,17 @@ export default function ({ dropdownClick, dropDownOpen, user, page, onLogoutClic
     return (
         <div>
             <header className="bg-blue page-header app-header section clearfix">
-                <h1 className="site-title col-sm-4"><a href="/_/#/"><span className="logo"></span><span>Turissini Technologies, LLC</span></a></h1>
+                <h1 className="site-title col-sm-4">
+                    <a href="/_/#/">
+                        <svg width="32" height="32" className="logo-svg color-compliment">
+                            <rect x="0" y="0" width="20" height="6" fill="#fff" />
+                            <rect x="7" y="5" width="6" height="16" fill="#fff" />
+                            <rect x="18" y="11" width="6" height="16" fill="#fff" />
+                            <rect x="11" y="26" width="20" height="6" fill="#fff" />
+                        </svg>
+                        <span>Turissini Technologies, LLC</span>
+                    </a>
+                </h1>
                 <nav className="header-nav col-sm-8 col-xs-12">
                     <ul className="no-bullet row text-right">
                         <li className="col-xs-6"><a href={documentationHref}>API Documentation</a></li>

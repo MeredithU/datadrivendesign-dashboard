@@ -39,7 +39,11 @@ a, a:active, a:focus {
 
 .site-title {
     font-size:1em;
-    margin-top:4px;
+    margin-top:16px;
+}
+
+.site-title a:hover .logo-svg rect {
+    fill:#ffe140;
 }
 
 .section .section-inner {
@@ -117,6 +121,14 @@ input[type=submit] {
 
 .site-title .logo {
     font-size:2em;
+}
+
+.logo-svg {
+    vertical-align: middle;
+}
+
+.logo-svg.color-compliment rect {
+    fill:#ffe140;
 }
 
 .logo {
@@ -235,10 +247,10 @@ input[type=submit] {
 }
 
 .page-index .hero .logo {
-    display:block;
-    margin:-20px auto 0;
-    font-size:4em;
-    width:1em;
+    margin-top:30px;
+    margin-left:30px;
+    width:256px;
+    height:256px;
 }
 
 .page-index .main .glyphicon {
