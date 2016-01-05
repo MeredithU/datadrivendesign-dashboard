@@ -132,27 +132,6 @@ input[type=submit] {
     fill:#ffe140;
 }
 
-.logo {
-    position:relative;
-    padding-right:1em;
-}
-
-.logo:before {
-    content: "T";
-    position:absolute;
-    left:0;
-    top:0;
-}
-
-.logo:after {
-    content: "T";
-    display:block;
-    transform:rotateX(180deg);
-    position:absolute;
-    top:0.23em;
-    left:0.23em;
-}
-
 form input {
     font-size:18px !important;
 }
@@ -250,8 +229,8 @@ input[type=submit] {
 .page-index .hero .logo {
     margin-top:30px;
     margin-left:30px;
-    width:256px;
-    height:256px;
+    max-width:256px;
+    max-height:256px;
 }
 
 .page-index .main .glyphicon {
