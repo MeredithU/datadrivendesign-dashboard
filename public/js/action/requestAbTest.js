@@ -18,7 +18,8 @@ export default function (path, params = {}) {
     const obs = abTestServiceConfigStream.flatMapLatest((config) => {
 
         const urlConfig = _.clone(config);
-        urlConfig.pathname = path;
+	const basePath = config.basePath || '';
+        urlConfig.pathname = basePath + path;
 
         return requestUrl(urlConfig, params);
     })
