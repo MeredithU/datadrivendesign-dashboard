@@ -13,7 +13,7 @@ export default function ({ dropdownClick, dropDownOpen, user, page, onLogoutClic
             <header className="bg-blue page-header app-header section clearfix">
                 <h1 className="site-title col-sm-4">
                     <a href="/_/#/">
-                        <img src="/public/images/logo.svg" class="logo logo-svg" width="32" height="32" />
+                        <img src="/public/images/logo.svg" className="logo logo-svg" width="32" height="32" />
                         <span>Turissini Technologies, LLC</span>
                     </a>
                 </h1>

@@ -8,7 +8,7 @@ import _ from 'lodash';
 // Components
 import NumberFormControl from 'dashboard/component/form-control/NumberFormControl';
 
-export default function ({ onSlugChange, abtestGroup, className, onDistributionValueChange = function () {}, onNameChange = function () {} }) {
+export default function ({ onSlugChange, abtestGroup, className, onNameChange = function () {} }) {
 
     const decoratedClassName = cx(className, 'abtestgroup-fields');
 
@@ -16,23 +16,16 @@ export default function ({ onSlugChange, abtestGroup, className, onDistributionV
         onNameChange(abtestGroup, e.target.value);
     };
 
-    function notifyDistributionValueChange (value) {
-        onDistributionValueChange(abtestGroup, value / 100);
-    }
-
     function notifySlugChange(e) {
         onSlugChange(abtestGroup, e.target.value);
-    } 
+    }
 
     return (
         <div className={decoratedClassName}>
+            <label>Name</label>
             <input onChange={notifyNameChange} value={abtestGroup.get('name')} placeholder="Untitled" type="text" className="form-control abtestgroup-title-input" />
+            <label>Identifier</label>
             <input onChange={notifySlugChange} value={abtestGroup.get('slug')} placeholder="untitled" type="text" className="form-control abtestgroup-title-input" />
-            <label>Distribution</label>
-            <div className="input-group">
-                <NumberFormControl value={abtestGroup.get('distribution') * 100} onChange={notifyDistributionValueChange} className="form-control text-right" />
-                <span className="input-group-addon">%</span>
-            </div>
         </div>
     );
 }

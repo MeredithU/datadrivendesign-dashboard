@@ -29,7 +29,12 @@ export default function (route) {
         sampleSize: 0
     };
 
-    const abtestGroups = [];
+    const controlGroup = AbTestGroup.create({
+        name: 'Control Group',
+        slug: 'control'
+    });
+
+    const abtestGroups = [controlGroup];
 
 
     return rx.Observable.create(function (o) {
@@ -46,11 +51,6 @@ export default function (route) {
             group.set('slug', value);
             next();
         }
-
-        function onGroupDistributionValueChange (group, value) {
-            group.set('distribution', value);
-            next();
-        };
 
         function onGroupNameChange (group, value) {
             group.set('name', value);
@@ -87,7 +87,7 @@ export default function (route) {
             const abtestGroup = AbTestGroup.create({
                 slug:''
             });
-            abtestGroup.set('distribution', 0);
+
             abtestGroups.push(abtestGroup);
             next();
         }
@@ -116,7 +116,6 @@ export default function (route) {
 
         const props = {
             onGroupSlugChange,
-            onGroupDistributionValueChange,
             onGroupNameChange,
             onSuggestedSampleSizeClick,
             onRemoveAbTestGroupClick,
