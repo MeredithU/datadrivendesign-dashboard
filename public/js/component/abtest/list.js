@@ -13,8 +13,10 @@ export default function ({ abtests, classNames }) {
             const abtestState = abtestData.abtestState;
             const abtest = abtestData.abtest;
             const abtestGroups = abtestData.abtestGroups;
+            const abtestGroupControl = abtestData.abtestControlGroup;
+
             const key = `abtest-${index}`;
-            let totalReported = 0;
+            let totalReported = abtestGroupControl.meta.impressionsCount;
 
             const groups = abtestGroups.map(function (abtestGroupData, groupIndex) {
                 const group = abtestGroupData.abtestGroup;
@@ -46,6 +48,7 @@ export default function ({ abtests, classNames }) {
             });
 
             const abtestTitle = abtest.get('name') || 'Untitled';
+            const abtestHref = abtest.href;
 
             return (
                 <div className={classnames} key={key}>
@@ -57,7 +60,7 @@ export default function ({ abtests, classNames }) {
                         </div>
                     </div>
                     <div className="col-xs-offset-2 col-xs-10 abtest-main pad">
-                        <h2 className="abtest-title">{abtestTitle} <small>({abtest.get('id')})</small></h2>
+                        <h2 className="abtest-title"><a href={abtestHref}>{abtestTitle}</a> <small>({abtest.get('id')})</small></h2>
                         <div className="row">
                             <div className="col-xs-6">Runs until {abtest.get('sampleSize')} impressions.</div>
                             <div className="col-xs-6">{totalReported} ({percentReported}%) Impressions to date</div>

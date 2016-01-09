@@ -1,12 +1,8 @@
 'use strict';
 
 
-export default function (userSession, user, abtest, abtestGroups) {
+export default function (userSession, user, abtest, abtestGroupControl, abtestGroups) {
     const body = abtest.asJSON();
-
-    body.groups = abtestGroups.map(function (abtestGroup) {
-        return abtestGroup.asJSON();
-    });
 
     return {
         path: `/users/${user.get('id')}/abtests`,
@@ -18,11 +14,18 @@ export default function (userSession, user, abtest, abtestGroups) {
                     sampleSize: abtest.get('sampleSize')
                 },
                 relationships: {
+                    abtestGroupControl: {
+                        type: 'abtestgroup',
+                        attributes: abtestGroupControl.asJSON()
+                    },
                     abtestGroup: abtestGroups.map(function (abtestGroup) {
                         return {
-                            slug: abtestGroup.get('slug'),
-                            distribution: abtestGroup.get('distribution'),
-                            name: abtestGroup.get('name')
+                            type: 'abtestgroup',
+                            attributes: {
+                                slug: abtestGroup.get('slug'),
+                                distribution: abtestGroup.get('distribution'),
+                                name: abtestGroup.get('name')
+                            }
                         };
                     })
                 }

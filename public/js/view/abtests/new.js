@@ -8,10 +8,15 @@ import NumberFormControl from 'dashboard/component/form-control/NumberFormContro
 import AbTestGroupForm from 'dashboard/component/form/AbTestGroupForm';
 
 export let __hotReload = true;
-export default function ({ onGroupSlugChange, onGroupNameChange, onSuggestedSampleSizeClick, onRemoveAbTestGroupClick, onAddGroupButtonClick, abtestGroups, onBaselineChange, onMinDetectableEffectChange, onSampleSizeChange, statsData, abtest, onNameChange, onSubmit }) {
+export default function ({ controlGroup, onControlGroupChange, onGroupSlugChange, onGroupNameChange, onSuggestedSampleSizeClick, onRemoveAbTestGroupClick, onAddGroupButtonClick, abtestGroups, onBaselineChange, onMinDetectableEffectChange, onSampleSizeChange, statsData, abtest, onNameChange, onSubmit }) {
 
     const groupsMarkup = abtestGroups.map(function (abtestGroup, index) {
         const key = `abtestgroup-${index}`;
+        const isSelected = (abtestGroup === controlGroup);
+
+        function handleControlGroupChange () {
+            onControlGroupChange(abtestGroup);
+        }
 
         function handleRemove () {
             onRemoveAbTestGroupClick(abtestGroup);
@@ -19,6 +24,8 @@ export default function ({ onGroupSlugChange, onGroupNameChange, onSuggestedSamp
 
         return (
             <div className="col-xs-12 col-md-4" key={key}>
+                <label>Is Control?</label>
+                <input type="radio" checked={isSelected} onChange={handleControlGroupChange} name="ab-test-control" />
                 <AbTestGroupForm onSlugChange={onGroupSlugChange} onNameChange={onGroupNameChange} abtestGroup={abtestGroup} />
                 <span onClick={handleRemove}>Remove</span>
             </div>

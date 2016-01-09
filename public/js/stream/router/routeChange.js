@@ -14,6 +14,7 @@ import homeIndex from 'dashboard/controller/home/index';
 import loginIndex from 'dashboard/controller/login/index';
 import newAbtests from 'dashboard/controller/abtests/new';
 import registerIndex from 'dashboard/controller/user/new';
+import showAbtests from 'dashboard/controller/abtests/show';
 
 const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
 
@@ -36,6 +37,15 @@ const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
                     o.onNext({
                         module: newAbtests
                     })
+                }],
+
+                '/abtests/:abtest_id': [generateFilterHandler(authFilter), function (abtestId) {
+                    o.onNext({
+                        params: {
+                            abtest_id: abtestId
+                        },
+                        module: showAbtests
+                    });
                 }],
 
                 '/login': function () {

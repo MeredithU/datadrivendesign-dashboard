@@ -30,7 +30,7 @@ const routerStream = rx.Observable.create(function (o) {
         };
 
         router.makeShowAbTestHref = function (abtest) {
-            return `#/abtests/${abtest.abtest.get('id')}`;
+            return `#/abtests/${abtest.get('id')}`;
         };
 
         router.transitionToCreateAbTest = function () {

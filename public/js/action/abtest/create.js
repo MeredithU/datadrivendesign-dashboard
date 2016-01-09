@@ -12,7 +12,7 @@ import currentUserSessionStream from 'dashboard/stream/userSession/current';
 // Request
 import createAbTestRequest from 'dashboard/request/abtest/createAbTest';
 
-export default function (abtest, abtestGroups) {
+export default function (abtest, abtestGroupControl, abtestGroups) {
 
     const observable = rx.Observable.combineLatest(
             currentUserStream,
@@ -23,7 +23,7 @@ export default function (abtest, abtestGroups) {
 
         ).flatMapLatest(({ user, userSession }) => {
 
-            const request = createAbTestRequest(userSession, user, abtest, abtestGroups);
+            const request = createAbTestRequest(userSession, user, abtest, abtestGroupControl, abtestGroups);
 
             return abtestClient.send(request);
 

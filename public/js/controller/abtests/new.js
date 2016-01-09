@@ -29,15 +29,16 @@ export default function (route) {
         sampleSize: 0
     };
 
-    const controlGroup = AbTestGroup.create({
+    const initialGroup = AbTestGroup.create({
         name: 'Control Group',
         slug: 'control'
     });
 
-    const abtestGroups = [controlGroup];
+    const abtestGroups = [initialGroup];
 
 
     return rx.Observable.create(function (o) {
+        let controlGroup = initialGroup;
 
         function next () {
             const sampleSize = calculateSampleSizeFromBaselineConversionRate(statsData.baseline / 100, statsData.minDetectableEffect / 100);
@@ -99,10 +100,18 @@ export default function (route) {
             next();
         }
 
+        function onControlGroupChange (abtestGroup) {
+            props.controlGroup = controlGroup = abtestGroup;
+            next();
+        }
+
         function onSubmit (e) {
             e.preventDefault();
+            const groupsWithoutControl = abtestGroups.filter((group) => {
+                return group !== controlGroup;
+            });
 
-            createAbTest(abtest, abtestGroups)
+            createAbTest(abtest, controlGroup, groupsWithoutControl)
                 .subscribe(
                     function (resp) {
                         window.location.hash = '/';
@@ -115,6 +124,8 @@ export default function (route) {
         }
 
         const props = {
+            onControlGroupChange,
+            controlGroup,
             onGroupSlugChange,
             onGroupNameChange,
             onSuggestedSampleSizeClick,

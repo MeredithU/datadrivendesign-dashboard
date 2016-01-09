@@ -25,7 +25,7 @@ export default function (route) {
         )
         .map(({ abtests, user }) => {
             abtests.forEach(function (abtest) {
-                abtest.abtest.href = router.makeShowAbTestHref(abtest);
+                abtest.abtest.href = router.makeShowAbTestHref(abtest.abtest);
             });
             return { abtests, createAbTestHref, user };
         })

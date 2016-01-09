@@ -2,16 +2,22 @@
 
 import rx from 'rx';
 
+// Stream
+import currentUserStream from 'dashboard/stream/user/current';
+import currentUserSessionStream from 'dashboard/stream/userSession/current';
+import createUserAbTestStream from 'dashboard/stream/user/abtest';
+
 // View
 import ShowAbTestView from 'dashboard/view/abtests/show';
 
 export default function (route) {
-    return rx.Observable.create(function (o) {
-        o.onNext({
-            hello: 'world'
-        });
-    })
+
+    return createUserAbTestStream(
+        currentUserStream,
+        currentUserSessionStream,
+        route.params.abtest_id
+    )
     .map((props) => {
         return ShowAbTestView(props);
-    })
+    });
 }

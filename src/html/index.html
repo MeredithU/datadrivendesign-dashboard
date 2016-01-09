@@ -125,6 +125,39 @@
 
             });
 
+            var abtestId = '5690bd0788a9715a842de273';
+            var apiKey = '5690bafc88a9715a842de16f';
+
+            jQuery.ajax({
+                url: '//localhost:4000/abtests/' + abtestId + '/impressions?api_key=' + apiKey,
+                method: 'post',
+                success: function (e) {
+                    var participantId = e.data.relationships.participant.data.attributes.key;
+
+                    jQuery.ajax({
+                        url: '//localhost:4000/abtests/' + abtestId + '/conversions?api_key=' + apiKey,
+                        method: 'post',
+                        dataType: 'json',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        data: JSON.stringify({
+                            data: {
+                                type: 'participant',
+                                attributes: {
+                                    key: participantId
+                                }
+                            }
+                        }),
+                        success: function (e) {
+                            console.log(e);
+                        }
+                    })
+                    
+
+                }
+            })
+
         </script>
     </body>
 </html>
