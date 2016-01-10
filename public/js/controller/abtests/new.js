@@ -73,10 +73,6 @@ export default function (route) {
                 next();
             }
 
-            function onSuggestedSampleSizeClick () {
-                updateSampleSize(statsData.sampleSize);
-            }
-
             function onNameChange (e) {
                 abtest.set('name', e.target.value);
                 next();
@@ -141,7 +137,6 @@ export default function (route) {
                 controlGroup,
                 onGroupSlugChange,
                 onGroupNameChange,
-                onSuggestedSampleSizeClick,
                 onRemoveAbTestGroupClick,
                 onAddGroupButtonClick,
                 abtestGroups,
