@@ -44,7 +44,7 @@ export default function (resp) {
 
         if (abtestData.included.abtestResults && abtestData.included.abtestResults.attributes) {
             abtestResult = AbTestResult.create(abtestData.included.abtestResults.attributes);
-            abtestResult.winner = abtestGroups.filter((abtestGroup) => {
+            abtestResult.winner = abtestGroups.concat(abtestControlGroup).filter((abtestGroup) => {
                 return (abtestGroup.abtestGroup.get('id') === abtestResult.get('winner_id'));
             })
             .map((a) => {

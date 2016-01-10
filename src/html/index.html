@@ -70,7 +70,7 @@
                         <p>Simple payment structure means that you only pay for what you use. No monthly fees for time when you aren't running tests.</p>
                     </div>
                     <div class="col-xs-12 text-center">
-                        <h3>$39.99 / 1,000 Unique Impressions</h3>
+                        <h3>$49.99 / 1,000 Unique Impressions</h3>
                         <a href="/register" class="btn btn-primary btn-large">Get started now</a>
                     </div>
                 </div>
@@ -79,6 +79,30 @@
         {{{footer}}}
         <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
         <script>
+            jQuery('[href="/register"]').click(function (e) {
+                e.preventDefault();
+
+                jQuery.ajax({
+                    url: '//localhost:4000/abtests/' + abtestId + '/conversions?api_key=' + apiKey,
+                    method: 'post',
+                    dataType: 'json',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify({
+                        data: {
+                            type: 'participant',
+                            attributes: {
+                                key: window.participantId
+                            }
+                        }
+                    }),
+                    success: function (e) {
+                        console.log(e);
+                    }
+                })
+            });
+
             jQuery('#loginform').submit(function (e) {
                 e.preventDefault();
 
@@ -125,7 +149,7 @@
 
             });
 
-            var abtestId = '5690bd0788a9715a842de273';
+            var abtestId = '5691f6b279089c4a8650918a';
             var apiKey = '5690bafc88a9715a842de16f';
 
             jQuery.ajax({
@@ -133,27 +157,7 @@
                 method: 'post',
                 success: function (e) {
                     var participantId = e.data.relationships.participant.data.attributes.key;
-
-                    jQuery.ajax({
-                        url: '//localhost:4000/abtests/' + abtestId + '/conversions?api_key=' + apiKey,
-                        method: 'post',
-                        dataType: 'json',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        data: JSON.stringify({
-                            data: {
-                                type: 'participant',
-                                attributes: {
-                                    key: participantId
-                                }
-                            }
-                        }),
-                        success: function (e) {
-                            console.log(e);
-                        }
-                    })
-                    
+                    window.participantId = participantId;
 
                 }
             })

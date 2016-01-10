@@ -29,10 +29,14 @@ export default function ({ abtest, abtestGroups, abtestControlGroup, abtestState
         const abtestGroup = abtestGroupObj.abtestGroup;
         const meta = abtestGroupObj.meta;
         const key = `abtest-group-${abtestGroup.get('id')}`;
-        const conversionRate = numeral((meta.conversionsCount / meta.impressionsCount)).format('00%');
-        const isWinner = abtestResult ? (abtestGroup.get('id') == abtestResult.winner.get('id')) : false;
+        const isWinner = abtestResult ? (abtestGroup.get('id') === abtestResult.winner.get('id')) : false;
         const isControl = (abtestControlGroup.abtestGroup.get('id') === abtestGroup.get('id'));
         let winnerIcon;
+        let conversionRate = numeral((meta.conversionsCount / meta.impressionsCount)).format('00%');
+
+        if (meta.impressionsCount === 0) {
+            conversionRate = numeral(0).format('00%');
+        }
 
         if (isWinner) {
             winnerIcon = (

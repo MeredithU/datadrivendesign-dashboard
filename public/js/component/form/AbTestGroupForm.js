@@ -10,7 +10,7 @@ import NumberFormControl from 'dashboard/component/form-control/NumberFormContro
 
 export default function ({ onSlugChange, abtestGroup, className, onNameChange = function () {} }) {
 
-    const decoratedClassName = cx(className, 'abtestgroup-fields');
+    const decoratedClassName = cx(className, 'abtestgroup-fields row');
 
     function notifyNameChange (e) {
         onNameChange(abtestGroup, e.target.value);
@@ -20,12 +20,21 @@ export default function ({ onSlugChange, abtestGroup, className, onNameChange = 
         onSlugChange(abtestGroup, e.target.value);
     }
 
+
     return (
         <div className={decoratedClassName}>
-            <label>Name</label>
-            <input onChange={notifyNameChange} value={abtestGroup.get('name')} placeholder="Untitled" type="text" className="form-control abtestgroup-title-input" />
-            <label>Identifier</label>
-            <input onChange={notifySlugChange} value={abtestGroup.get('slug')} placeholder="untitled" type="text" className="form-control abtestgroup-title-input" />
+            <div className="col-xs-12 col-sm-6">
+                <div className="input-group input-group-sm">
+                    <span className="input-group-addon" id="sizing-addon3">Name</span>
+                    <input onChange={notifyNameChange} value={abtestGroup.get('name')} placeholder="Untitled" type="text" className="form-control" />
+                </div>
+            </div>
+            <div className="col-xs-12 col-sm-6">
+                <div className="input-group input-group-sm">
+                    <span className="input-group-addon" id="sizing-addon3">Identifier</span>
+                    <input onChange={notifySlugChange} value={abtestGroup.get('slug')} placeholder="untitled" type="text" className="form-control" />
+                </div>
+            </div>
         </div>
     );
 }
