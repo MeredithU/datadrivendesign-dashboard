@@ -9,7 +9,7 @@ export default {
         const abtestState = model.create(attributes);
 
         abtestState.STATUS_ACTIVE = 'active';
-        abtestState.STATUS_COMPLETE = 'complete';
+        abtestState.STATUS_COMPLETE = 'completed';
 
         abtestState.isActive = function () {
             return abtestState.get('status') === abtestState.STATUS_ACTIVE;

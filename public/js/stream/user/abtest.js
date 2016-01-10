@@ -26,5 +26,6 @@ export default function (userStream, userSessionStream, abtestId) {
     .flatMapLatest((resp) => {
         return abtestShowResponse(resp);
     })
+    .shareReplay(1);
 
 };

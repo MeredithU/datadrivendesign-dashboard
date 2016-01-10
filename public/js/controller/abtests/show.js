@@ -18,6 +18,14 @@ export default function (route) {
         route.params.abtest_id
     )
     .map((props) => {
+        const abtestControlGroup = props.abtestControlGroup.abtestGroup;
+        const abtestGroups = props.abtestGroups.filter((a) => {
+            return (a.abtestGroup.get('id') !== abtestControlGroup.get('id'));
+        });
+
+        abtestGroups.unshift(props.abtestControlGroup);
+        props.abtestGroups = abtestGroups;
+
         return ShowAbTestView(props);
     });
 }

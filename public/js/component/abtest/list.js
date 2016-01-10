@@ -5,6 +5,8 @@ import moment from 'moment';
 
 import cx from 'classnames';
 
+import AbTestStatus from 'dashboard/component/abtest/abtestStatus';
+
 export default function ({ abtests, classNames }) {
     let abtestsList;
 
@@ -56,14 +58,14 @@ export default function ({ abtests, classNames }) {
                         <div className="abtest-meta-content">
                             <h5 className="month">{created.format('MMM')}</h5>
                             <h4 className="day">{created.format('DD')}</h4>
-                            <h6 className={activeClassname}>{abtestState.get('status')}</h6>
                         </div>
                     </div>
                     <div className="col-xs-offset-2 col-xs-10 abtest-main pad">
-                        <h2 className="abtest-title"><a href={abtestHref}>{abtestTitle}</a> <small>({abtest.get('id')})</small></h2>
+                        <h3 className="abtest-title"><a href={abtestHref}>{abtestTitle}</a></h3>
                         <div className="row">
-                            <div className="col-xs-6">Runs until {abtest.get('sampleSize')} impressions.</div>
-                            <div className="col-xs-6">{totalReported} ({percentReported}%) Impressions to date</div>
+                            <div className="col-xs-12">
+                                <AbTestStatus abtest={abtest} abtestState={abtestState} />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,61 @@ export default function ({ abtests, user, createAbTestHref, classNames }) {
     let body;
 
     if (abtests.length) {
-        const list = AbTestList(...arguments);
+        const sorted = abtests.reduce((seed, abtest) => {
+            const abtestState = abtest.abtestState;
+
+            if (abtestState.isActive()) {
+                seed.active.push(abtest);
+            } else {
+                seed.completed.push(abtest);
+            }
+
+            return seed;
+
+        }, {
+            active: [],
+            completed: []
+        });
+
+
+        let activeSection;
+        let completedSection;
+
+        if (sorted.active.length) {
+            const activeList = AbTestList({
+                classNames,
+                abtests: sorted.active
+            });
+
+            activeSection = (
+                <section>
+                    <header>
+                        <h3>Active A/B Tests</h3>
+                        <hr />
+                    </header>
+                    {activeList}
+                </section>
+            );
+        }
+
+        if (sorted.completed.length) {
+            const completedList = AbTestList({
+                classNames,
+                abtests: sorted.completed
+            });
+
+            completedSection = (
+                <section>
+                    <header>
+                        <h3>Completed A/B Tests</h3>
+                        <hr />
+                    </header>
+                    {completedList}
+                </section>
+            );
+        }
+
+
         const sidebar = HomeSidebar({ user, createAbTestHref });
         body = (
             <div className="row">
@@ -22,7 +76,8 @@ export default function ({ abtests, user, createAbTestHref, classNames }) {
                     {sidebar}
                 </div>
                 <div className="col-xs-12 col-sm-pull-3 col-sm-9">
-                    {list}
+                    {activeSection}
+                    {completedSection}
                 </div>
             </div>
         );
