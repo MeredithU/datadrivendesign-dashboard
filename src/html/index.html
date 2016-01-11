@@ -79,6 +79,21 @@
         {{{footer}}}
         <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
         <script>
+
+            var apiKey = '567c97cdb9a8419d2f491164';
+            var abtest = '568c74ea384f4ca56481b239';
+
+            jQuery.ajax({
+                method: 'POST',
+                url: 'https://turissini.co/abtests-api/abtests/' + abtest + '/impressions?api_key=' + apiKey,
+                headers: {
+                    'Content-Type': 'appliation/json'
+                },
+                success: function (e) {
+                    console.log(e);
+                }
+            })
+
             jQuery('#loginform').submit(function (e) {
                 e.preventDefault();
 

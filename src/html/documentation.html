@@ -22,163 +22,199 @@
     </head>
     <body>
         {{{header}}}
-        <div class="row">
-            <nav class="nav-docs col-xs-3">
-                <ul class="nav-pills nav no-bullet">
-                    <li><a href="#creating">Creating an A/B Test</a></li>
-                    <li><a href="#implementation">Implementing an A/B Test</a></li>
-                </ul>
-            </nav>
-            <main class="main-docs col-xs-9">
-                <section class="chapter" id="creating">
-                    <h2>Creating an A/B Test</h2>
-                    <section class="clearfix">
-                        <figure class="pull-right figure-docs">
-                            <img class="image" src="/public/images/docs/new_ab_tests_blank.png" />
-                            <figcaption>
-                                Fig 1.1
-                            </figcaption>
-                        </figure>
-                        <h3>Creating your first A/B Test</h3>
-                        <p>To create a new A/B Test, first <a href="/login">Login into your account</a>. If you do not have an account, first <a href="/register">register a new account</a> to get started.</p>
-                        <p>Once you have logged in, click link at the top of the page. (Fig 1.1)</p>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="nav-docs col-sm-3 hidden-xs">
+                    <ul class="nav-pills nav no-bullet">
+                        <li><a href="#creating">Creating an A/B Test</a></li>
+                        <li><a href="#implementation">Implementing an A/B Test</a></li>
+                    </ul>
+                </nav>
+                <main class="main-docs col-xs-12 col-sm-9">
+                    <section class="row chapter" id="creating">
+                        <div class="col-xs-12">
+                            <h2>Creating an A/B Test</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                            <figure class="figure-docs">
+                                <img class="image" src="/public/images/docs/new_ab_tests_blank.png" />
+                                <figcaption>
+                                    Fig 1.1
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                            <h3>Creating your first A/B Test</h3>
+                            <p>To create a new A/B Test, first <a href="/login">Login into your account</a>. If you do not have an account, first <a href="/register">register a new account</a> to get started.</p>
+                            <p>Once you have logged in, click link at the top of the page. (Fig 1.1)</p>
+                        </div>
                     </section>
                     <hr />
-                    <section class="clearfix">
-                        <figure class="pull-right figure-docs">
-                            <img class="image" src="/public/images/docs/new_ab_tests_existing.png" />
-                            <figcaption>
-                                Fig 1.2
-                            </figcaption>
-                        </figure>
-                        <h3>Creating an A/B Test when one already exists</h3>
-                        <p>If you have already created an A/B test in the past, there will be a blue button on the right side of the page that says "Create new A/B Test" (Fig 1.2).</p>
+                    <section class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                            <figure class="figure-docs">
+                                <img class="image" src="/public/images/docs/new_ab_tests_existing.png" />
+                                <figcaption>
+                                    Fig 1.2
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                            <h3>Creating an A/B Test when one already exists</h3>
+                            <p>If you have already created an A/B test in the past, there will be a blue button on the right side of the page that says "Create new A/B Test" (Fig 1.2).</p>
+                        </div>
                     </section>
                     <hr />
-                    <section class="clearfix">
-                        <figure class="pull-right figure-docs">
-                            <img class="image" src="/public/images/docs/new_ab_test_form.png" />
-                            <figcaption>
-                                Fig 1.3
-                            </figcaption>
-                        </figure>
-                        <h3>Populating A/B Tests</h3>
-                        <p>Once you see the form to create an A/B test (Fig 1.3), you should title your test and determing how large the A/B Test sample size should be. There is a calculator on the page to help you determing how large of a sample size you need to get a minimum detectable effect. It is recommended that you use that number, but you do not have to.</p>
+                    <section class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                            <figure class="figure-docs">
+                                <img class="image" src="/public/images/docs/new_ab_test_form.png" />
+                                <figcaption>
+                                    Fig 1.3
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                            <h3>Populating A/B Tests</h3>
+                            <p>Once you see the form to create an A/B test (Fig 1.3), you should title your test and determing how large the A/B Test sample size should be. There is a calculator on the page to help you determing how large of a sample size you need to get a minimum detectable effect. It is recommended that you use that number, but you do not have to.</p>
+                        </div>
                     </section>
                     <hr />
-                    <section class="clearfix">
-                        <figure class="pull-right figure-docs">
-                            <img class="image" src="/public/images/docs/new_ab_test_form_groups.png" />
-                            <figcaption>
-                                Fig 1.4
-                            </figcaption>
-                        </figure>
-                        <h3>Creating A/B Test Groups</h3>
-                        <p>Every A/B Test needs to have groups to test against. You can create an A/B Test Group by clicking on the "Add Group" button on the A/B Test form (Fig 1.4). You can add as many groups as you like. Each A/B Test Group needs to have a distribution percentage, a name and a slug. The distribution percentage defines what percentage of impressions are assigned to each group. The name field is so that you an identify your group when you log into Data-Driven Design and the slug field is so you can programatically determine which control group a user is in. Think of the slug as a human-readable identifier.</p>
+                    <section class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                            <figure class="figure-docs">
+                                <img class="image" src="/public/images/docs/new_ab_test_form_groups.png" />
+                                <figcaption>
+                                    Fig 1.4
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                            <h3>Creating A/B Test Groups</h3>
+                            <p>Every A/B Test needs to have groups to test against. You can create an A/B Test Group by clicking on the "Add Group" button on the A/B Test form (Fig 1.4). You can add as many groups as you like. Each A/B Test Group needs to have a distribution percentage, a name and a slug. The distribution percentage defines what percentage of impressions are assigned to each group. The name field is so that you an identify your group when you log into Data-Driven Design and the slug field is so you can programatically determine which control group a user is in. Think of the slug as a human-readable identifier.</p>
+                        </div>
                     </section>
                     <hr />
-                    <section class="clearfix">
-                        <h3>Saving A/B Test</h3>
-                        <p>Once your fields are populated, click the "Save" button to create your A/B Test. You are now ready to integrate the A/B Test into your project.</p>
+                    <section class="row">
+                        <div class="col-xs-12">
+                            <h3>Saving A/B Test</h3>
+                            <p>Once your fields are populated, click the "Save" button to create your A/B Test. You are now ready to integrate the A/B Test into your project.</p>
+                        </div>
                     </section>
-                </section>
-                <section class="chapter" id="implementation">
-                    <h2>Implementing an A/B Test</h2>
-                    <section class="clearfix">
-                        <figure class="pull-right figure-docs">
-                            <img class="image" src="/public/images/docs/new_ab_tests_existing.png" />
-                            <figcaption>
-                                Fig 2.1
-                            </figcaption>
-                        </figure>
-                        <h3>API Key</h3>
-                        <p>Once an A/B Test has been created, it is immediately ready to be used through Data-Driven Design REST APIs. The first thing you will need is your API Key, which is located on the dashboard home screen (Fig 2.1).</p>
-                        <p>The API Key is what Data-Driven Design uses to identify that it is your app making requests for your A/B Tests. Every api call needs to have the api_key parameter as a query string on your requests:</p>
-                        <code>
-                            http://datadrivendesign.com/abtests/impressions?api_key=APIKEY
-                        </code>
-                    </section>
-                    <section class="clearfix">
-                        <h3>Technical Terms</h3>
-                        <p>Users in A/B Tests have 3 main terms: Participants, Impressions, and Conversions.</p>
-                        <p>A <em>Participant</em> is a user who has interacted with any of your A/B Tests. We keep track of participants to ensure that they are only assigne to one A/B Test Group per A/B Test at any given time.</p>
-                        <p>An <em>Impressions</em> is when a <em>Participant</em> is placed into an A/B Test Group. Once a <em>Participant</em> has been placed into an A/B Test Group, they will always in that A/B Test Group.</p>
-                        <p>A <em>Conversion</em> is when a <em>Participant</em> does the action that you are trying to measure. For example, if you are testing Blue Buy button versus Red Buy button, and a user clicks on the Red Buy button, that is considered a conversion for the Red Button A/B Test Group. Once a <em>Participant</em> has converted, subsequent conversions will not be counted.</p>
-                    </section>
-                    <section class="clearfix">
-                        <h3>Generic Workflow</h3>
-                        <p>The following is a generic workflow for when a user visits a page where an A/B Test is running:</p>
-                        <ul>
-                            <li>User lands on page</li>
-                            <li>App makes a request to Data-Driven Design to assign the <em>Participant</em> and A/B Test Group</li>
-                            <li>Save a reference to the <em>Participant's</em> ID so you can keep track of future visits by participant.</li>
-                            <li>Once A/B Test Group has been determined, your use the A/B Test Group slug to render UI based on that <em>Participant's</em> A/B Test Group.</li>
-                            <li>When <em>Participant</em> converts, send request to Data-Driven Design with <em>participant</em> id to record conversion.</li>
-                        </ul>
-                    </section>
-                    <section class="clearfix">
-                        <h3>Registering an impression</h3>
-                        <p>To create an impression, make a POST request to <code>http://api.datadrivendesign.co/abtests/YOUR_ABTEST_ID/impressions?api_key=YOUR_API_KEY</code>.</p>
-                        <p>The response will include a <code>data</code> attribute that has the following data:</p>
-                        <pre>
-                            <code class="json">
-            {
+                    <section class="chapter" id="implementation">
+                        <div className="row">
+                            <div className="col-xs-12">
+                                <h2>Implementing an A/B Test</h2>
+                            </div>
+                        </div>
+                        <section class="row">
+                            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                                <figure class="figure-docs">
+                                    <img class="image" src="/public/images/docs/new_ab_tests_existing.png" />
+                                    <figcaption>
+                                        Fig 2.1
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+                                <h3>API Key</h3>
+                                <p>Once an A/B Test has been created, it is immediately ready to be used through Data-Driven Design REST APIs. The first thing you will need is your API Key, which is located on the dashboard home screen (Fig 2.1).</p>
+                                <p>The API Key is what Data-Driven Design uses to identify that it is your app making requests for your A/B Tests. Every api call needs to have the api_key parameter as a query string on your requests:</p>
+                                <code>
+                                    https://turissini.co/abtests-api/abtests/impressions?api_key=APIKEY
+                                </code>
+                            </div>
+                        </section>
+                        <section class="row">
+                            <div class="col-xs-12">
+                                <h3>Technical Terms</h3>
+                                <p>Users in A/B Tests have 3 main terms: Participants, Impressions, and Conversions.</p>
+                                <p>A <em>Participant</em> is a user who has interacted with any of your A/B Tests. We keep track of participants to ensure that they are only assigne to one A/B Test Group per A/B Test at any given time.</p>
+                                <p>An <em>Impressions</em> is when a <em>Participant</em> is placed into an A/B Test Group. Once a <em>Participant</em> has been placed into an A/B Test Group, they will always in that A/B Test Group.</p>
+                                <p>A <em>Conversion</em> is when a <em>Participant</em> does the action that you are trying to measure. For example, if you are testing Blue Buy button versus Red Buy button, and a user clicks on the Red Buy button, that is considered a conversion for the Red Button A/B Test Group. Once a <em>Participant</em> has converted, subsequent conversions will not be counted.</p>
+                            </div>
+                        </section>
+                        <section class="row">
+                            <div class="col-xs-12">
+                                <h3>Generic Workflow</h3>
+                                <p>The following is a generic workflow for when a user visits a page where an A/B Test is running:</p>
+                                <ul>
+                                    <li>User lands on page</li>
+                                    <li>App makes a request to Data-Driven Design to assign the <em>Participant</em> and A/B Test Group</li>
+                                    <li>Save a reference to the <em>Participant's</em> ID so you can keep track of future visits by participant.</li>
+                                    <li>Once A/B Test Group has been determined, your use the A/B Test Group slug to render UI based on that <em>Participant's</em> A/B Test Group.</li>
+                                    <li>When <em>Participant</em> converts, send request to Data-Driven Design with <em>participant</em> id to record conversion.</li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="row">
+                            <div class="col-xs-12">
+                                <h3>Registering an impression</h3>
+                                <p>To create an impression, make a POST request to <code>https://turissini.co/abtests-api/abtests/YOUR_ABTEST_ID/impressions?api_key=YOUR_API_KEY</code>.</p>
+                                <p>The response will include a <code>data</code> attribute that has the following data:</p>
+                                <pre>
+                                    <code class="json">
+{
+    data: {
+        type: 'abtestgroup',
+        id: ABTESTGROUP_ID,
+        attributes: {
+            name: ABTESTGROUP_NAME,
+            slug: ABTESTGROU_SLUG
+        },
+        relationships: {
+            participant: {
                 data: {
-                    type: 'abtestgroup',
-                    id: ABTESTGROUP_ID,
                     attributes: {
-                        name: ABTESTGROUP_NAME,
-                        slug: ABTESTGROU_SLUG
-                    },
-                    relationships: {
-                        participant: {
-                            data: {
-                                attributes: {
-                                    key: PARTICIPANT_KEY
-                                }
-                            }
-                        }
+                        key: PARTICIPANT_KEY
                     }
                 }
             }
-                            </code>
-                        </pre>
-                        <p>With the response above, you can determine what action to take based on the <code>data.id</code> or <code>data.attributes.slug</code>. The only difference between the two is the slug should be human readable.</p>
-                        <p>You should also grab the value found at <code>data.relationships.participant.data.attributes.key</code>. This is the key for the <em>participant</em> that was created with this impression. This should be saved somewhere so that it can be referenced with future impressions and conversions requests.</p>
-                        <p>If a <em>participant</em> object is found for a user, you can make an impression call again and pass the <em>participant key</em> with the request. Data Driven Design will see the key and return the A/B Test Group that the user is already a part of. You do not have to keep track and remember which A/B Test Group a user is a part of. An example request:</p>
-                        <p><code>POST http://api.datadrivendesign.co/abtests/YOUR_ABTEST_ID/impressions?api_key=YOUR_API_KEY</code></p>
-                        <pre>
-                            <code class="json">
-                                {
-                                    data: {
-                                        type: 'participant',
-                                        attributes: {
-                                            key: PARTICIPANT_KEY
-                                        }
-                                    }
-                                }
-                            </code>
-                        </pre>
+        }
+    }
+}
+                                    </code>
+                                </pre>
+                                <p>With the response above, you can determine what action to take based on the <code>data.id</code> or <code>data.attributes.slug</code>. The only difference between the two is the slug should be human readable.</p>
+                                <p>You should also grab the value found at <code>data.relationships.participant.data.attributes.key</code>. This is the key for the <em>participant</em> that was created with this impression. This should be saved somewhere so that it can be referenced with future impressions and conversions requests.</p>
+                                <p>If a <em>participant</em> object is found for a user, you can make an impression call again and pass the <em>participant key</em> with the request. Data Driven Design will see the key and return the A/B Test Group that the user is already a part of. You do not have to keep track and remember which A/B Test Group a user is a part of. An example request:</p>
+                                <p><code>POST https://turissini.co/abtests-api/abtests/YOUR_ABTEST_ID/impressions?api_key=YOUR_API_KEY</code></p>
+                                <pre>
+                                    <code class="json">
+{
+    data: {
+        type: 'participant',
+        attributes: {
+            key: PARTICIPANT_KEY
+        }
+    }
+}
+                                    </code>
+                                </pre>
+                            </div>
+                        </section>
+                        <section class="row">
+                            <div class="col-xs-12">
+                                <h3>Registering a conversion</h3>
+                                <p>To register a conversion, make a POST request to <code>https://turissini.co/abtests-api/abtests/ABTEST_ID/conversions</code> with the following POST body:</p>
+                                <pre>
+                                    <code class="json">
+{
+    data: {
+        type: 'participant',
+        attributes: {
+            key: PARTICIPANT_KEY
+        }
+    }
+}
+                                    </code>
+                                </pre>
+                                <p>This will automatically create a conversion for that <em>participant</em> in that A/B Test Group. A <em>participant</em> can only be converted once. If a conversion request gets a <em>participant</em> more than once, a conversion will not be recorded.</p>
+                            </div>
+                        </section>
                     </section>
-                    <section class="clearfix">
-                        <h3>Registering a conversion</h3>
-                        <p>To register a conversion, make a POST request to <code>http://api.datadrivendesign.io/abtests/ABTEST_ID/conversions</code> with the following POST body:</p>
-                        <pre>
-                            <code class="json">
-                                {
-                                    data: {
-                                        type: 'participant',
-                                        attributes: {
-                                            key: PARTICIPANT_KEY
-                                        }
-                                    }
-                                }
-                            </code>
-                        </pre>
-                        <p>This will automatically create a conversion for that <em>participant</em> in that A/B Test Group. A <em>participant</em> can only be converted once. If a conversion request gets a <em>participant</em> more than once, a conversion will not be recorded.</p>
-                    </section>
-                </section>
-            </main>
+                </main>
+            </div>
         </div>
     </body>
 </html>

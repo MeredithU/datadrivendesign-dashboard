@@ -190,11 +190,8 @@ input[type=submit] {
 }
 
 .figure-docs {
-    width:400px;
     background:#eee;
     padding:10px;
-    margin-left:30px;
-    margin-bottom:30px;
 }
 
 .figure-docs figcaption {
