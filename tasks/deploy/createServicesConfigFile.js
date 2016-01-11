@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const path = './dist/public/config/services.json';
+const path = './public/config/services.json';
 const env = process.env;
 /*
 
