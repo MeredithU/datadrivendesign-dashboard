@@ -4,10 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "build": "npm run clean && jspm bundle-sfx --skip-source-maps ./src/dashboard.js ./../dashboard-dist/dashboard.js && cp src/index.html ../dashboard-dist/app.html && cp -R ./src/css ../dashboard-dist/css && cp ./src/jspm_packages/system.js ../dashboard-dist/jspm_packages/system.js && cp src/config.js ../dashboard-dist/config.js",
-    "clean": "rm -rf ./dist",
+    "build": "npm run clean && npm install && jspm install && mkdir ./dist && cp -R ./src/ ./dist/src && cp -R ./public ./dist/public && rm -rf ./dist/public/jspm_packages && rm ./dist/public/dashboard.js && cp ./server.js ./dist/server.js && mkdir ./dist/public/jspm_packages && cp ./public/jspm_packages/system.js ./dist/public/jspm_packages/system.js && jspm bundle-sfx --skip-source-maps ./public/dashboard.js ./dist/public/dashboard.js",
+    "clean": "rm -rf ./dist && rm -rf ./node_modules && rm -rf ./public/jspm_packages",
     "start": "forever start --spinSleepTime 10000 server.js",
-    "postinstall": "jspm install",
     "stop": "forever stop ./server.js",
     "restart": "npm run stop && npm start"
   },
