@@ -234,22 +234,25 @@ input[type=submit] {
     font-size:2.2rem;
 }
 
-.main {
-    padding:0 0 50px 0;
+.inline-block {
+    display:inline-block;
 }
 
+.vert-align-middle {
+    vertical-align:middle;
+}
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
     .page-index .hero {
-        font-size:2em;
+        font-size:3em;
     }
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width: 481px) and (max-width : 767px) {
     .page-index .hero {
-        font-size:2.5em;
+        font-size:3em;
     }
 
     h1 {
@@ -267,11 +270,22 @@ input[type=submit] {
     }
 }
 
+@media only screen and (min-width: 768px) {
+    .page-index .hero-copy {
+        margin-left:20px;
+    }
+
+
+    .page-index .hero {
+        padding-right:20px;
+        font-size:3.5em;
+        padding-bottom:60px;
+    }
+}
+
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 768px) and (max-width: 979px) {
-    .page-index .hero {
-        font-size:3em;
-    }
+
 }
 
 /* Large Devices, Wide Screens */
