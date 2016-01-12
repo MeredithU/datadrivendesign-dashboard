@@ -25,22 +25,34 @@ function loadFooter () {
     });
 };
 
+function loadHead () {
+    return new Promise(function (resolve, rej) {
+        fs.readFile(`${__dirname}/src/partial/_head.html`, function (err, contents) {
+            resolve(contents.toString());
+        })
+    });
+}
+
 function loadDocument (path) {
     return loadHeader()
         .then(function (header) {
 
             return loadFooter()
                 .then(function (footer) {
-                    return new Promise(function (res, rej) {
-                        fs.readFile(path, function (err, contents) {
-                            var html = mustache.render(contents.toString(), {
-                                apporigin: apporigin,
-                                header: header,
-                                footer: footer
+                    return loadHead()
+                        .then(function (head) {
+                            return new Promise(function (res, rej) {
+                                fs.readFile(path, function (err, contents) {
+                                    var html = mustache.render(contents.toString(), {
+                                        apporigin: apporigin,
+                                        header: header,
+                                        footer: footer,
+                                        head: head
+                                    });
+                                    res(html);
+                                })
                             });
-                            res(html);
-                        })
-                    });
+                        });
                 });
         });
 }
@@ -73,10 +85,7 @@ app.get('/documentation', function (req, res) {
 });
 
 app.get('/_', function (req, res) {
-    fs.readFile(`${__dirname}/src/html/app.html`, function (err, contents) {
-        res.write(contents.toString());
-        res.end();
-    })
+    renderDocument(`${__dirname}/src/html/app.html`, res);
 });
 
 app.use('/public', express.static(__dirname + '/public'));
