@@ -1,11 +1,17 @@
 'use strict';
 
+const rx = require('rx');
 const express = require('express');
 const fs = require('fs');
 const port = 8000;
-const mustache = require('mustache')
+const mustache = require('mustache');
+const request = require('request');
+const queryLoadPartial = require('./src/js/queries/file/loadPartial');
+const _ = require('lodash');
 
 const apporigin = process.env.DASHBOARD_ABTEST_APP_ORIGIN;
+
+const registerController = require('./src/js/controller/register');
 
 const app = express();
 
@@ -73,7 +79,35 @@ app.get('/login', function (req, res) {
 });
 
 app.get('/register', function (req, res) {
-    renderDocument(`${__dirname}/src/html/register.html`, res);
+    registerController(req, res)
+        .flatMapLatest((props) => {
+            const layoutStream = queryLoadPartial('layout/default.html');
+            const headerStream = queryLoadPartial('_header.html');
+            const headStream = queryLoadPartial('_head.html');
+            const footerStream = queryLoadPartial('_footer.html');
+            const bodyStream = queryLoadPartial('_body.html');
+
+            return rx.Observable.combineLatest(
+                    layoutStream,
+                    headerStream,
+                    headStream,
+                    footerStream,
+                    bodyStream,
+                    function (layout, site_header, head, footer, body) {
+                        return mustache.render(layout, {
+                            head: mustache.render(head, props.header),
+                            footer: mustache.render(footer, props.footer),
+                            body: mustache.render(body, _.extend(props.body, {
+                                site_header: mustache.render(site_header, props.site_header)
+                            }))
+                        });
+                    }
+                );
+        })
+        .subscribe((contents) => {
+            res.write(contents);
+            res.end();
+        });
 });
 
 app.get('/pricing', function (req, res) {
