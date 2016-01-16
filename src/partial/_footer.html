@@ -5,3 +5,10 @@
         </div>
     </div>
 </footer>
+<script src="/public/jspm_packages/system.js"></script>
+<script src="/public/config.js"></script>
+{{#scripts}}
+<script>
+    System.import('{{{scripts}}}');
+</script>
+{{/scripts}}

@@ -4,7 +4,7 @@ import rx from 'rx';
 
 export default function (urlConfig, params = {}) {
     const url = `${urlConfig.protocol}://${urlConfig.hostname}:${urlConfig.port}${urlConfig.pathname}`;
-    
+
     if (!params.headers) {
         params.headers = {};
     }
@@ -17,9 +17,13 @@ export default function (urlConfig, params = {}) {
         params.headers['Accept'] = 'application/json';
     }
 
-    const promise = fetch(url, params);
-
-    return rx.Observable.fromPromise(promise)
+    return rx.Observable.create(function (o) {
+            fetch(url, params)
+                .then(function (resp) {
+                    o.onNext(resp);
+                    o.onCompleted();
+                }, o.onError.bind(o));
+        })
         .flatMapLatest((resp) => {
             return resp.json()
                 .then(function (json) {

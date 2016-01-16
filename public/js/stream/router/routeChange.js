@@ -46,21 +46,7 @@ const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
                         },
                         module: showAbtests
                     });
-                }],
-
-                '/login': function () {
-                    o.onNext({
-                        name: 'login',
-                        module: loginIndex
-                    });
-                },
-
-                '/register': function () {
-                    o.onNext({
-                        name: 'register',
-                        module: registerIndex
-                    });
-                }
+                }]
             });
 
         });

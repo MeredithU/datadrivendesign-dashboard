@@ -25,4 +25,4 @@ export default rx.Observable.merge(
         hasUserSessionStream,
         noUserSession
     )
-    .shareReplay(1);
+    .replay(undefined, 1);

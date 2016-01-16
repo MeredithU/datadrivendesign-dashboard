@@ -11,6 +11,7 @@ System.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
+    "turissini/*": "js/*.js",
     "dashboard/*": "js/*.js",
     "dashboard": "dashboard.js",
     "css/*": "css/*.js"
@@ -27,6 +28,7 @@ System.config({
     "davidturissini/datadrivendesign-calculator": "github:davidturissini/datadrivendesign-calculator@master",
     "director": "npm:director@1.2.8",
     "events": "npm:events@1.1.0",
+    "jquery": "npm:jquery@2.2.0",
     "json": "github:systemjs/plugin-json@0.1.0",
     "lodash": "npm:lodash@3.10.1",
     "moment": "npm:moment@2.10.6",

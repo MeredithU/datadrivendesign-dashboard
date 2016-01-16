@@ -17,11 +17,11 @@ const routerStream = rx.Observable.create(function (o) {
     .map((router) => {
 
         router.makeLoginHref = function () {
-            return '#/login';
+            return '/login';
         };
 
         router.redirectToLoginHref = function () {
-            const href = this.makeLoginHref().replace('#', '');
+            const href = this.makeLoginHref();
             router.setRoute(href);
         };
 

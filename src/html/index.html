@@ -1,141 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        {{{head}}}
-    </head>
-    <body class="page-index">
-        {{{header}}}
-        <section class="section hero bg-blue">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 text-center">
-                        <img src="/public/images/logo.svg" class="hidden-xs vert-align-middle logo logo-svg" />
-                        <div class="hero-copy inline-block vert-align-middle">
-                            <ul class="no-bullet">
-                                <li><strong class="color-compliment">A/B Testing</strong></li>
-                                <li>Simplified</li>
-                            </ul>
-                        </div>
-                    </div>
+
+<section class="section hero bg-blue">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img src="/public/images/logo.svg" class="hidden-xs vert-align-middle logo logo-svg" />
+                <div class="hero-copy inline-block vert-align-middle">
+                    <ul class="no-bullet">
+                        <li><strong class="color-compliment">A/B Testing</strong></li>
+                        <li>Simplified</li>
+                    </ul>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+<main class="clearfix container">
+    <section class="row">
+        <div class="col-xs-12 text-center">
+            <p class="lead">
+                Our simple and fast A/B Testing service enhances your product and marketing to maximize your user engagement. Whether you want to maximize user engagement or increase sales, Turissini Technologies' A/B Testing services will help get you to where you want to go.
+                <br />
+                <a href="#how-it-works">See how it works</a>
+            </p>
+        </div>
+        <div class="col-xs-12 text-center">
+            <a href="/register" class="btn btn-primary">Get started</a>
+        </div>
+    </section>
+    <hr />
+    <section class="row">
+        <header class="col-xs-12 text-center">
+            <h1>Features</h1>
+        </header>
+        <section class="col-xs-12 col-sm-4">
+            <h4 class="section-title">Intelligent tools to assist you with creating your A/B Tests</h4>
+            <p>Our A/B Testing creation tools put you in the driver seat when it comes to determining how long an A/B Test will run. Start with an existing conversion rate and see how many impressions will be needed to create a valid test for your goals.</p>
         </section>
-        <main class="clearfix container">
-            <section class="row">
-                <div class="col-xs-12 text-center">
-                    <p class="lead">
-                        Our simple and fast A/B Testing service enhances your product and marketing to maximize your user engagement. Whether you want to maximize user engagement or increase sales, Turissini Technologies' A/B Testing services will help get you to where you want to go.
-                        <br />
-                        <a href="#how-it-works">See how it works</a>
-                    </p>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <a href="/register" class="btn btn-primary">Get started</a>
-                </div>
-            </section>
-            <hr />
-            <section class="row">
-                <header class="col-xs-12 text-center">
-                    <h1>Features</h1>
-                </header>
-                <section class="col-xs-12 col-sm-4">
-                    <h4 class="section-title">Intelligent tools to assist you with creating your A/B Tests</h4>
-                    <p>Our A/B Testing creation tools put you in the driver seat when it comes to determining how long an A/B Test will run. Start with an existing conversion rate and see how many impressions will be needed to create a valid test for your goals.</p>
-                </section>
 
-                <section class="col-xs-12 col-sm-4">
-                    <h4 class="section-title">See your A/B Test results in real time A/B Test Monitoring</h4>
-                    <p>Your business moves fast to stay on top, so your tools shouldn't hold you back. From the moment you create an A/B test, you will be able to track conversion rates and see how your tests are performing. The moment the A/B Test ends, you will be able to see the final results and scientifically determine which version performed best for your goals.</p>
-                </section>
+        <section class="col-xs-12 col-sm-4">
+            <h4 class="section-title">See your A/B Test results in real time A/B Test Monitoring</h4>
+            <p>Your business moves fast to stay on top, so your tools shouldn't hold you back. From the moment you create an A/B test, you will be able to track conversion rates and see how your tests are performing. The moment the A/B Test ends, you will be able to see the final results and scientifically determine which version performed best for your goals.</p>
+        </section>
 
-                <section class="col-xs-12 col-sm-4">
-                    <h4 class="section-title">A/B Tests ready for integration into already existing apps</h4>
-                    <p>You've worked hard on your existing applications and marketing campaigns, so why should you have to redo everything to add A/B Testing? Simply use our simple APIs to add A/B Testing functionality to your apps and campaigns. No starting from scratch necessary.</p>
-                </section>
-            </section>
-            <hr />
-            <section class="section row">
-                <div class="col-xs-12 text-center" id="how-it-works">
-                    <h1>How It Works</h1>
-                    <p>Integrating an A/B Test is simple. After <a href="/register">creating an account</a>, you can create an A/B Test. After an A/B Test has been created, you can use our fast and simple APIs to add A/B Testing to any application, website or e-mail campaign. And with our simple <a href="#pricing">pricing</a>, you will always know how much you are spending and never go over budget.</p>
-                </div>
-            </section>
-            <hr />
-            <section class="section row" id="pricing">
-                <div class="col-xs-12 text-center">
-                    <h1>Pricing</h1>
-                    <p>Simple payment structure means that you only pay for what you use. No monthly fees for time when you aren't running tests.</p>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <h3>$49.99 / 1,000 Unique Impressions</h3>
-                    <a href="/register" class="btn btn-primary btn-large">Get started</a>
-                </div>
-            </section>
-        </main>
-        {{{footer}}}
-        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script>
-
-            var apiKey = '567c97cdb9a8419d2f491164';
-            var abtest = '568c74ea384f4ca56481b239';
-
-            jQuery.ajax({
-                method: 'POST',
-                url: 'https://turissini.co/abtests-api/abtests/' + abtest + '/impressions?api_key=' + apiKey,
-                headers: {
-                    'Content-Type': 'appliation/json'
-                },
-                success: function (e) {
-                    console.log(e);
-                }
-            })
-
-            jQuery('#loginform').submit(function (e) {
-                e.preventDefault();
-
-                const userData = {
-                    username: jQuery('#user-email').val(),
-                    password: jQuery('#user-password').val(),
-                    confirm: jQuery('#user-confirm').val()
-                };
-
-                jQuery.ajax({
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    url: '//{{apporigin}}/users',
-                    method: 'POST',
-                    data: JSON.stringify(userData)
-                })
-                .then(function (e) {
-
-                    return jQuery.ajax({
-                        dataType: 'json',
-                        contentType: 'application/json',
-                        url: '//{{apporigin}}/usersessions',
-                        method: 'POST',
-                        data: JSON.stringify(userData)
-                    })
-
-                }, function (e) {
-                    console.log('error', e);
-                })
-
-                .then(function (e) {
-                    var userSessionData = e.data;
-                    var userSessionId = userSessionData.id;
-                    var userId = userSessionData.relationships.user.id;
-
-                    window.sessionStorage.setItem('user-session', JSON.stringify({
-                        id: userSessionId
-                    }));
-
-                    window.sessionStorage.setItem('user-id', userId);
-
-                    window.location.href = '/app/';
-                });
-
-            });
-
-        </script>
-    </body>
-</html>
+        <section class="col-xs-12 col-sm-4">
+            <h4 class="section-title">A/B Tests ready for integration into already existing apps</h4>
+            <p>You've worked hard on your existing applications and marketing campaigns, so why should you have to redo everything to add A/B Testing? Simply use our simple APIs to add A/B Testing functionality to your apps and campaigns. No starting from scratch necessary.</p>
+        </section>
+    </section>
+    <hr />
+    <section class="section row">
+        <div class="col-xs-12 text-center" id="how-it-works">
+            <h1>How It Works</h1>
+            <p>Integrating an A/B Test is simple. After <a href="/register">creating an account</a>, you can create an A/B Test. After an A/B Test has been created, you can use our fast and simple APIs to add A/B Testing to any application, website or e-mail campaign. And with our simple <a href="#pricing">pricing</a>, you will always know how much you are spending and never go over budget.</p>
+        </div>
+    </section>
+    <hr />
+    <section class="section row" id="pricing">
+        <div class="col-xs-12 text-center">
+            <h1>Pricing</h1>
+            <p>Simple payment structure means that you only pay for what you use. No monthly fees for time when you aren't running tests.</p>
+        </div>
+        <div class="col-xs-12 text-center">
+            <h3>$49.99 / 1,000 Unique Impressions</h3>
+            <a href="/register" class="btn btn-primary btn-large">Get started</a>
+        </div>
+    </section>
+</main>

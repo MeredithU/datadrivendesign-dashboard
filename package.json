@@ -24,6 +24,7 @@
       "davidturissini/datadrivendesign-calculator": "github:davidturissini/datadrivendesign-calculator@master",
       "director": "npm:director@^1.2.8",
       "events": "npm:events@^1.1.0",
+      "jquery": "npm:jquery@^2.2.0",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "lodash": "npm:lodash@^3.10.1",
       "moment": "npm:moment@^2.10.6",
@@ -47,6 +48,7 @@
     "forever": "^0.15.1",
     "jspm": "^0.16.19",
     "mustache": "^2.2.1",
+    "numeral": "^1.5.3",
     "request": "^2.67.0",
     "rx": "^4.0.7"
   }

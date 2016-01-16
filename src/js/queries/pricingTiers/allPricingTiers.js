@@ -3,6 +3,7 @@
 const rx = require('rx');
 const request = require('request');
 const configStream = require('./../../config/main');
+const _ = require('lodash');
 
 
 module.exports = function () {
@@ -16,7 +17,16 @@ module.exports = function () {
 
                 const json = JSON.parse(body);
 
-                o.onNext(json);
+                json.data.forEach(function (tier) {
+                    const map = new Map();
+                    Object.keys(tier.attributes).forEach(function (attr) {
+                        map.set(attr, tier.attributes[attr]);
+                    });
+
+                    map.id = tier.id;
+                    o.onNext(map);
+                });
+
                 o.onCompleted();
 
             });

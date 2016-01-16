@@ -12,6 +12,9 @@ const _ = require('lodash');
 const apporigin = process.env.DASHBOARD_ABTEST_APP_ORIGIN;
 
 const registerController = require('./src/js/controller/register');
+const appController = require('./src/js/controller/app');
+const homeController = require('./src/js/controller/home');
+const loginController = require('./src/js/controller/login');
 
 const app = express();
 
@@ -70,17 +73,8 @@ function renderDocument (path, res) {
     });
 }
 
-app.get('/', function (req, res) {
-    renderDocument(`${__dirname}/src/html/index.html`, res);
-});
-
-app.get('/login', function (req, res) {
-    renderDocument(`${__dirname}/src/html/login.html`, res);
-});
-
-app.get('/register', function (req, res) {
-    registerController(req, res)
-        .flatMapLatest((props) => {
+function loadContents (controllerStream) {
+    return controllerStream.flatMapLatest((props) => {
             const layoutStream = queryLoadPartial('layout/default.html');
             const headerStream = queryLoadPartial('_header.html');
             const headStream = queryLoadPartial('_head.html');
@@ -104,14 +98,33 @@ app.get('/register', function (req, res) {
                     }
                 );
         })
-        .subscribe((contents) => {
-            res.write(contents);
-            res.end();
-        });
+}
+
+app.get('/login', function (req, res) {
+    loadContents(
+        loginController(req, res)
+    ).subscribe((contents) => {
+        res.write(contents);
+        res.end();
+    });
 });
 
-app.get('/pricing', function (req, res) {
-    renderDocument(`${__dirname}/src/html/pricing.html`, res);
+app.get('/', function (req, res) {
+    loadContents(
+        homeController(req, res)
+    ).subscribe((contents) => {
+        res.write(contents);
+        res.end();
+    });
+});
+
+app.get('/register', function (req, res) {
+    loadContents(
+        registerController(req, res)
+    ).subscribe((contents) => {
+        res.write(contents);
+        res.end();
+    });
 });
 
 app.get('/documentation', function (req, res) {
@@ -119,7 +132,12 @@ app.get('/documentation', function (req, res) {
 });
 
 app.get('/_', function (req, res) {
-    renderDocument(`${__dirname}/src/html/app.html`, res);
+    loadContents(
+        appController(req, res)
+    ).subscribe((contents) => {
+        res.write(contents);
+        res.end();
+    });
 });
 
 app.use('/public', express.static(__dirname + '/public'));

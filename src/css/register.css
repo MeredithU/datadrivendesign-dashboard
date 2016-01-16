@@ -1,0 +1,38 @@
+.label-box {
+    position: relative;
+}
+
+.label-box > input {
+    display:none;
+}
+
+.label-box > label {
+    cursor:pointer;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:10;
+}
+
+.page-register input:checked + .label-box {
+    background: #ccc;
+}
+
+.page-register input[type=submit] {
+    margin-bottom:20px;
+    width:100%;
+}
+
+.page-register .pricing-tier-summary {
+    padding:20px;
+}
+
+.page-register .title-pricing-tier {
+    margin-top:0;
+}
+
+.page-register .form-register-input-group {
+    margin-bottom:15px;
+}

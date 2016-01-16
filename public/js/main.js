@@ -12,30 +12,70 @@ import rx from 'rx';
 import currentRouterStream from 'dashboard/stream/router/current';
 import containerStream from 'dashboard/stream/element/container';
 import routeChangeStream from 'dashboard/stream/router/routeChange';
+import currentUserSessionStream from 'turissini/stream/userSession/current';
+import currentUserStream from 'turissini/stream/user/current';
 
+// Actions
+import userLogoutAction from 'turissini/action/user/userLogoutAction';
 
-// Controller
-import layoutController from 'dashboard/controller/layout/default'; 
+import HeaderNav from 'turissini/component/header/nav';
+
 import Root from 'dashboard/view/Root';
 
-routeChangeStream.flatMapLatest((route) => {
+currentUserSessionStream
+    .filter((userSession) => {
+        return userSession;
+    })
 
-        const module = route.module;
-        return module(route)
-            .flatMapLatest((page) => {
-                return layoutController(route, page);
+    .subscribe((userSession) => {
+
+        const div = document.getElementById('site-nav-container');
+
+        currentUserStream.map((user) => {
+
+            const props = {
+                user
+            };
+
+            props.onLogoutClick = function () {
+                userLogoutAction(userSession, user)
+                    .subscribeOnCompleted(function () {
+                        window.sessionStorage.clear();
+                        window.location.href = '/';
+                    });
+            };
+
+            return props;
+
+        })
+        .map((props) => {
+            return HeaderNav(props);
+        })
+        .subscribe((component) => {
+            return ReactDom.render(<div>{component}</div>, div);
+        });
+
+
+
+        routeChangeStream.flatMapLatest((route) => {
+                const module = route.module;
+                return module(route);
+            })
+            .combineLatest(
+                containerStream,
+                function (page, element) {
+                    return { page, element }
+                }
+            )
+
+            .subscribe(({ page, element }) => {
+                ReactDom.render(<Root page={page} />, element);
             });
-            
 
-    }).combineLatest(
-        containerStream,
-        function (page, element) {
-            return { page, element }
-        }
-    )
-    .subscribe(({ page, element }) => {
-        ReactDom.render(<Root page={page} />, element);
+
     });
+
+currentUserSessionStream.connect();
 
 currentRouterStream.subscribe((router) => {
     router.init('/');
