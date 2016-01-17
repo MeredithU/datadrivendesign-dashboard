@@ -11,10 +11,10 @@ import currentRouterStream from 'dashboard/stream/router/current';
 
 
 import homeIndex from 'dashboard/controller/home/index';
-import loginIndex from 'dashboard/controller/login/index';
 import newAbtests from 'dashboard/controller/abtests/new';
-import registerIndex from 'dashboard/controller/user/new';
 import showAbtests from 'dashboard/controller/abtests/show';
+import showApiKeys from 'dashboard/controller/user/apiKeys';
+import showPricingTiers from 'dashboard/controller/user/pricing';
 
 const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
 
@@ -45,6 +45,18 @@ const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
                             abtest_id: abtestId
                         },
                         module: showAbtests
+                    });
+                }],
+
+                '/api-keys': [generateFilterHandler(authFilter), function () {
+                    o.onNext({
+                        module: showApiKeys
+                    })
+                }],
+
+                '/pricing': [generateFilterHandler(authFilter), function () {
+                    o.onNext({
+                        module: showPricingTiers
                     });
                 }]
             });

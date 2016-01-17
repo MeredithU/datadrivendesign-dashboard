@@ -43,6 +43,14 @@ const routerStream = rx.Observable.create(function (o) {
             return '/documentation';
         };
 
+        router.makeApiKeysHref = function () {
+            return '#/api-keys';
+        };
+
+        router.makePricingTierHref = function () {
+            return '#/pricing';
+        };
+
         return router;
 
     })

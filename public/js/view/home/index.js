@@ -8,7 +8,6 @@ import cx from 'classnames';
 // View
 import AbTestList from 'dashboard/component/abtest/list';
 import NoAbTests from 'dashboard/component/abtest/none';
-import HomeSidebar from 'dashboard/component/home/sidebar';
 
 export default function ({ abtests, user, createAbTestHref, classNames }) {
     let body;
@@ -41,12 +40,14 @@ export default function ({ abtests, user, createAbTestHref, classNames }) {
             });
 
             activeSection = (
-                <section>
-                    <header>
+                <section className="row">
+                    <header className="col-xs-12">
                         <h3>Active A/B Tests</h3>
                         <hr />
                     </header>
-                    {activeList}
+                    <div className="col-xs-12">
+                        {activeList}
+                    </div>
                 </section>
             );
         }
@@ -58,36 +59,27 @@ export default function ({ abtests, user, createAbTestHref, classNames }) {
             });
 
             completedSection = (
-                <section>
-                    <header>
+                <section className="row">
+                    <header className="col-xs-12">
                         <h3>Completed A/B Tests</h3>
                         <hr />
                     </header>
-                    {completedList}
+                    <div className="col-xs-12">
+                        {completedList}
+                    </div>
                 </section>
             );
         }
 
-
-        const sidebar = HomeSidebar({ user, createAbTestHref });
         body = (
-            <div className="row">
-                <div className="col-xs-12 col-sm-push-9 col-sm-3">
-                    {sidebar}
-                </div>
-                <div className="col-xs-12 col-sm-pull-3 col-sm-9">
-                    {activeSection}
-                    {completedSection}
-                </div>
+            <div>
+                {activeSection}
+                {completedSection}
             </div>
         );
     } else {
         body = NoAbTests({ createAbTestHref });
     }
 
-    return (
-        <div className="clearfix">
-            {body}
-        </div>
-    );
+    return body;
 }

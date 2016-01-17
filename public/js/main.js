@@ -15,6 +15,10 @@ import routeChangeStream from 'dashboard/stream/router/routeChange';
 import currentUserSessionStream from 'turissini/stream/userSession/current';
 import currentUserStream from 'turissini/stream/user/current';
 
+// View Controller
+import appNavViewController from 'turissini/viewController/nav/appNav';
+
+
 // Actions
 import userLogoutAction from 'turissini/action/user/userLogoutAction';
 
@@ -29,7 +33,7 @@ currentUserSessionStream
 
     .subscribe((userSession) => {
 
-        const div = document.getElementById('site-nav-container');
+        const div = document.getElementById('site-navbar-collapse');
 
         currentUserStream.map((user) => {
 
@@ -45,6 +49,9 @@ currentUserSessionStream
                     });
             };
 
+            props.userApiKeysHref = '#/api-keys';
+            props.pricingHref = '#/pricing';
+
             return props;
 
         })
@@ -55,11 +62,14 @@ currentUserSessionStream
             return ReactDom.render(<div>{component}</div>, div);
         });
 
-
-
         routeChangeStream.flatMapLatest((route) => {
                 const module = route.module;
                 return module(route);
+            })
+            .flatMapLatest((contents) => {
+                return appNavViewController({
+                    contents
+                });
             })
             .combineLatest(
                 containerStream,

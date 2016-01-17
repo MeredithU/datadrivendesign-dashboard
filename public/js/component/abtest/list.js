@@ -43,7 +43,7 @@ export default function ({ abtests, classNames }) {
             }
 
             const created = moment(abtest.get('created'));
-            const classnames = cx(classNames, 'clearfix abtest abtest-row');
+            const classnames = cx(classNames, 'row abtest abtest-row');
             const activeClassname = cx('abtest-status', {
                 'status-active': abtestState.isActive(),
                 'status-complete': abtestState.isComplete()
@@ -60,7 +60,7 @@ export default function ({ abtests, classNames }) {
                             <h4 className="day">{created.format('DD')}</h4>
                         </div>
                     </div>
-                    <div className="col-xs-offset-2 col-xs-10 abtest-main pad">
+                    <div className="col-xs-10 abtest-main pad">
                         <h3 className="abtest-title"><a href={abtestHref}>{abtestTitle}</a></h3>
                         <div className="row">
                             <div className="col-xs-12">
@@ -75,7 +75,7 @@ export default function ({ abtests, classNames }) {
     }
 
     return (
-        <div className="clearfix">
+        <div>
             {abtestsList}
         </div>
     );

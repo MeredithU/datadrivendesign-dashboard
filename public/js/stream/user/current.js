@@ -8,13 +8,16 @@ import currentUserSessionStream from 'dashboard/stream/userSession/current';
 // Model
 import User from 'dashboard/model/user';
 
+// Queries
+import queryUserById from 'turissini/queries/user/getUserById';
+
 // Client
 import abtestServiceClient from 'dashboard/client/abtestService';
 
 // Request
 import getUserRequest from 'dashboard/request/user/get';
 
-import sessionStorage from 'dashboard/storage/sessionStorage';
+import sessionStorageStream from 'dashboard/storage/sessionStorage';
 
 function createCurrentUserStream (userSessionStream) {
     return userSessionStream.filter((userSession) => {
@@ -23,35 +26,13 @@ function createCurrentUserStream (userSessionStream) {
         .distinctUntilChanged(function (userSession) {
             return userSession.get('id')
         })
-        .combineLatest(
-            sessionStorage,
-            function (userSession, sessionStorage) {
-                const userId = sessionStorage.getItem('user-id');
-                return { userSession, userId };
-            }
-        )
-        .flatMapLatest(({ userSession, userId }) => {
-            const user = User.create({
-                id: userId
-            });
-
-            const request = getUserRequest(user);
-
-            return abtestServiceClient.send(request);
-            
-        })
-        .flatMapLatest((resp) => {
-            return rx.Observable.create(function (o) {
-                if (resp.error) {
-                    o.onError(resp.error);
-                    return
-                }
-
-                const user = User.create(resp.data);
-
-                o.onNext(user);
-                o.onCompleted();
-            });
+        .flatMapLatest((userSession) => {
+            return sessionStorageStream.map((sessionStorage) => {
+                return sessionStorage.getItem('user-id');
+            })
+            .flatMapLatest((userId) => {
+                return queryUserById(userId);
+            })
         })
         .shareReplay(1);
 }

@@ -7,7 +7,7 @@ html, body {
 }
 
 .bg-blue {
-    background:rgb(0, 32, 74);;
+    background:#04346c;
     color:#fff;
 }
 
@@ -21,7 +21,7 @@ html, body {
 
 
 a, a:active, a:focus {
-    color:rgb(0, 32, 74);
+    color:#04346c;
 }
 
 .color-compliment {
@@ -39,7 +39,9 @@ a, a:active, a:focus {
 
 .site-title {
     font-size:1em;
-    margin-top:16px;
+    margin-top:-4px;
+    position:relative;
+    z-index:10;
 }
 
 .site-title a:hover .logo-svg rect {
@@ -54,14 +56,13 @@ a, a:active, a:focus {
 }
 
 .page-header {
-    padding-top:0;
+    padding-top:10px;
     margin-bottom:0;
     padding-bottom:5px;
     margin-top:0;
 }
 
 .page-index .page-header {
-    padding-top:27px;
     padding-bottom:9px;
 }
 
@@ -118,6 +119,7 @@ input[type=submit] {
 
 .site-title .logo {
     font-size:2em;
+    display:inline;
 }
 
 .logo-svg {
@@ -240,6 +242,146 @@ input[type=submit] {
 
 .vert-align-middle {
     vertical-align:middle;
+}
+
+.navbar-brand-nav .navbar-nav > li > a:hover,
+.navbar-brand-nav > li > a:active,
+.navbar-brand-nav > li > a:focus {
+    background: transparent;
+}
+
+.navbar-brand-nav .navbar-nav>li>a {
+    color:#fff;
+}
+
+.navbar-brand-nav .navbar-brand:focus,
+.navbar-brand-nav .navbar-brand:hover {
+    color:#ffe140;
+}
+
+.navbar-brand-nav .navbar-nav>li>a:hover {
+    color:#ffe140;
+}
+
+.navbar-brand-nav .navbar-collapse {
+    border:0;
+}
+
+.navbar-brand-nav .navbar-right {
+    margin-right:0;
+}
+
+.navbar-brand-nav .navbar-brand {
+    color:#fff;
+}
+
+.navbar-brand-nav {
+    background:#04346c;
+    border:0;
+    border-radius:0;
+    color:#fff;
+    padding:10px 0;
+    margin-bottom:0;
+}
+
+.navbar-brand-nav .navbar-toggle:focus,
+.navbar-brand-nav .navbar-toggle:hover {
+    background: transparent;
+}
+
+.navbar-brand-nav .navbar-toggle.active {
+    border-color: #ffe140;
+    background: transparent;
+}
+
+.navbar-brand-nav .navbar-toggle.active .icon-bar {
+    background: #ffe140;
+}
+
+.navbar-brand-nav .navbar-toggle .icon-bar {
+    background:#fff;
+    border-color:#fff;
+}
+
+.navbar-brand-nav .navbar-collapse.in .navbar-nav {
+    margin-left:15px;
+    text-align:right;
+}
+
+.navbar-brand-nav .navbar-collapse.in .navbar-nav a {
+    padding-left:0;
+}
+
+.navbar-brand-nav .user-welcome {
+    display: block;
+    padding:15px;
+}
+
+.block-link {
+    position:relative;
+    z-index:10;
+}
+
+.block-link .link {
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:10;
+}
+
+
+.app-nav-item {
+    padding:15px;
+}
+
+.app-nav-item.active,
+.app-nav-item:hover {
+    color: #04346C;
+}
+
+.app-nav-item.active:after,
+.app-nav-item:hover:after {
+    border:10px solid transparent;
+    border-top-color:#274E7D;
+    content: "";
+    height:0;
+    width:0;
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.app-nav-item.active .link-bottom-border,
+.app-nav-item:hover .link-bottom-border{
+    display:block;
+    position:absolute;
+    width:50%;
+    left:50%;
+    top:100%;
+    transform:translateX(-50%);
+    height:1px;
+    background:#274E7D;
+    z-index:10;
+}
+
+
+.app-nav-item .icon {
+    display:block;
+    font-size:1.5em;
+    margin-bottom:15px;
+}
+
+.link-bottom-border {
+    display:none;
+}
+
+.app-nav {
+    background:#e1e1e1;
+    border-bottom:1px solid #b1b1b1;
+    color:#666;
 }
 
 /* Extra Small Devices, Phones */
