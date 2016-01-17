@@ -42,7 +42,7 @@ export default function ({ abtests, user, createAbTestHref, classNames }) {
             activeSection = (
                 <section className="row">
                     <header className="col-xs-12">
-                        <h3>Active A/B Tests</h3>
+                        <h3>Active A/B Tests <span className="badge">{sorted.active.length}</span></h3>
                         <hr />
                     </header>
                     <div className="col-xs-12">

@@ -12,7 +12,6 @@ import AbTestResultsReport from 'dashboard/component/abtest/resultsReport';
 
 
 export default function ({ abtest, abtestGroups, abtestControlGroup, abtestState, abtestResult }) {
-
     const hasResult = (abtestResult !== null);
     let resultComponent;
 
@@ -64,7 +63,7 @@ export default function ({ abtest, abtestGroups, abtestControlGroup, abtestState
                 </div>
                 <div className="col-xs-4 col-sm-3 text-center">
                     <div>
-                        <div className="cell-heading-big">
+                        <div className="cell-heading big">
                             {meta.impressionsCount}
                         </div>
                         Impressions
@@ -72,7 +71,7 @@ export default function ({ abtest, abtestGroups, abtestControlGroup, abtestState
                 </div>
                 <div className="col-xs-4 col-sm-3 text-center">
                     <div>
-                        <div className="cell-heading-big">
+                        <div className="cell-heading big">
                             {meta.conversionsCount}
                         </div>
                         Conversions
@@ -80,7 +79,7 @@ export default function ({ abtest, abtestGroups, abtestControlGroup, abtestState
                 </div>
                 <div className="col-xs-4 col-sm-3 text-center">
                     <div>
-                        <div className="cell-heading-big">
+                        <div className="cell-heading big">
                             {conversionRate}
                         </div>
                          Conversion Rate

@@ -28,7 +28,7 @@ export default function ({ abtests, classNames }) {
                 totalReported += population;
 
                 return (
-                    <div className="col-xs-4" key={key}>
+                    <div className="col-xs-4 " key={key}>
                         <h4>{group.get('name')}</h4>
                         <div>Population: {population}</div>
                         <div>Conversions: {abtestGroupData.meta.conversionsCount}</div>
@@ -43,7 +43,7 @@ export default function ({ abtests, classNames }) {
             }
 
             const created = moment(abtest.get('created'));
-            const classnames = cx(classNames, 'row abtest abtest-row');
+            const classnames = cx(classNames, 'block-link row abtest abtest-row');
             const activeClassname = cx('abtest-status', {
                 'status-active': abtestState.isActive(),
                 'status-complete': abtestState.isComplete()
@@ -54,19 +54,15 @@ export default function ({ abtests, classNames }) {
 
             return (
                 <div className={classnames} key={key}>
-                    <div className="col-xs-2 abtest-meta text-center pad">
-                        <div className="abtest-meta-content">
-                            <h5 className="month">{created.format('MMM')}</h5>
-                            <h4 className="day">{created.format('DD')}</h4>
-                        </div>
+                    <a href={abtestHref} className="link"></a>
+                    <div className="col-xs-12">
+                        <h3 className="hover-underline text-primary abtest-title">{abtestTitle}</h3>
                     </div>
-                    <div className="col-xs-10 abtest-main pad">
-                        <h3 className="abtest-title"><a href={abtestHref}>{abtestTitle}</a></h3>
-                        <div className="row">
-                            <div className="col-xs-12">
-                                <AbTestStatus abtest={abtest} abtestState={abtestState} />
-                            </div>
-                        </div>
+                    <div className="col-xs-12 col-sm-12">
+                        <AbTestStatus abtest={abtest} abtestState={abtestState} />
+                    </div>
+                    <div className="col-xs-12 col-sm-12">
+                        Created on {created.format('MMM DD, YYYY')}
                     </div>
                 </div>
             );

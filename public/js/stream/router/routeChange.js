@@ -14,7 +14,7 @@ import homeIndex from 'dashboard/controller/home/index';
 import newAbtests from 'dashboard/controller/abtests/new';
 import showAbtests from 'dashboard/controller/abtests/show';
 import showApiKeys from 'dashboard/controller/user/apiKeys';
-import showPricingTiers from 'dashboard/controller/user/pricing';
+import showPricingTiers from 'dashboard/controller/user/billing';
 
 const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
 
@@ -29,13 +29,15 @@ const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
             router.mount({
                 '/': [generateFilterHandler(authFilter), function (a) {
                     o.onNext({
-                        module: homeIndex
+                        module: homeIndex,
+                        context: 'abtests'
                     });
                 }],
 
                 '/abtests/new': [generateFilterHandler(authFilter), function () {
                     o.onNext({
-                        module: newAbtests
+                        module: newAbtests,
+                        context: 'abtests'
                     })
                 }],
 
@@ -44,19 +46,22 @@ const currentRouteStream = currentRouterStream.flatMapLatest((router) => {
                         params: {
                             abtest_id: abtestId
                         },
-                        module: showAbtests
+                        module: showAbtests,
+                        context: 'abtests'
                     });
                 }],
 
-                '/api-keys': [generateFilterHandler(authFilter), function () {
+                '/api': [generateFilterHandler(authFilter), function () {
                     o.onNext({
-                        module: showApiKeys
+                        module: showApiKeys,
+                        context: 'api'
                     })
                 }],
 
-                '/pricing': [generateFilterHandler(authFilter), function () {
+                '/billing': [generateFilterHandler(authFilter), function () {
                     o.onNext({
-                        module: showPricingTiers
+                        module: showPricingTiers,
+                        context: 'billing'
                     });
                 }]
             });

@@ -17,13 +17,16 @@ import getUserRequest from 'dashboard/request/user/get';
 function queryUserById (user) {
     return getUserRequest(user)
         .map((resp) => {
-            const apiKeyAttributes = resp.data.relationships.apikey;
-            const apiKey = new Map();
-            console.log(resp);
+            const pricingTierData = resp.data.relationships.pricingTier;
+            const pricingTier = new Map();
 
-            apiKey.set('id', apiKeyAttributes.id);
+            Object.keys(pricingTierData.attributes).forEach(function (key) {
+                pricingTier.set(key, pricingTierData.attributes[key]);
+            });
 
-            return apiKey;
+            pricingTier.set('id', pricingTierData.id);
+
+            return pricingTier;
         });
 }
 

@@ -25,6 +25,10 @@ const routerStream = rx.Observable.create(function (o) {
             router.setRoute(href);
         };
 
+        router.makeHomeHref = function () {
+            return '#/';
+        };
+
         router.makeCreateAbTestHref = function () {
             return '#/abtests/new';
         };
@@ -41,6 +45,14 @@ const routerStream = rx.Observable.create(function (o) {
 
         router.makeDocumentationHref = function () {
             return '/documentation';
+        };
+
+        router.makeBillingHref = function () {
+            return '#/billing';
+        };
+
+        router.makeAPIHref = function () {
+            return '#/api'
         };
 
         router.makeApiKeysHref = function () {

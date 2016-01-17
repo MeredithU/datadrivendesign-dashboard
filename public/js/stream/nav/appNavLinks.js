@@ -2,37 +2,47 @@
 
 import rx from 'rx';
 
-export default function () {
-    return rx.Observable.create(function (o) {
-        const links = [{
-            text: 'Your A/B Tests',
-            href: '/_/#/',
-            icon: 'signal'
-        }, {
-            text: 'Documentation',
-            href: '/documentation',
-            icon: 'file'
-        }, {
-            text: 'Billing',
-            href: '/_/#/billing',
-            icon: 'piggy-bank'
-        }, {
-            text: 'API',
-            href: '/_/#api',
-            icon: 'cloud'
-        }];
+import appRouterStream from 'turissini/stream/router/current';
 
-        links.map(function (link) {
-            const m = new Map();
+export default function (routerStream = appRouterStream) {
+    return routerStream.first().flatMapLatest((router) => {
 
-            Object.keys(link).forEach(function (key) {
-                m.set(key, link[key]);
-            });
+        return rx.Observable.create(function (o) {
+            const links = [{
+                text: 'Your A/B Tests',
+                href: router.makeHomeHref(),
+                icon: 'signal',
+                context: 'abtests'
+            }, {
+                text: 'Documentation',
+                href: router.makeDocumentationHref(),
+                icon: 'file',
+                context: 'documentation'
+            }, {
+                text: 'Billing',
+                href: router.makeBillingHref(),
+                icon: 'piggy-bank',
+                context: 'billing'
+            }, {
+                text: 'API',
+                href: router.makeAPIHref(),
+                icon: 'cloud',
+                context: 'api'
+            }];
 
-            return m;
-        })
-        .forEach(o.onNext, o);
-        o.onCompleted();
+            links.map(function (link) {
+                const m = new Map();
 
+                Object.keys(link).forEach(function (key) {
+                    m.set(key, link[key]);
+                });
+
+                return m;
+            })
+            .forEach(o.onNext, o);
+
+            o.onCompleted();
+
+        });
     });
 }

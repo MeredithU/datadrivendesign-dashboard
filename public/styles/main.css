@@ -69,6 +69,7 @@ a, a:active, a:focus {
 .page-footer {
     padding-top:20px;
     margin-bottom:0;
+    margin-top:15px;
     padding-bottom:20px;
 }
 
@@ -322,6 +323,10 @@ input[type=submit] {
     z-index:10;
 }
 
+.block-link:hover .hover-underline {
+    text-decoration: underline;
+}
+
 .block-link .link {
     position: absolute;
     top:0;
@@ -382,6 +387,15 @@ input[type=submit] {
     background:#e1e1e1;
     border-bottom:1px solid #b1b1b1;
     color:#666;
+    margin-bottom:25px;
+}
+
+.cell-heading {
+    font-size: 1em;
+}
+
+.cell-heading.big {
+    font-size:2em;
 }
 
 /* Extra Small Devices, Phones */
