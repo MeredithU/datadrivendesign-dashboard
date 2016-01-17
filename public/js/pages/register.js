@@ -8,9 +8,23 @@ import registerUserAction from 'turissini/action/user/userRegisterAction';
 import userLoginAndRedirectAction from 'turissini/action/user/userLoginAndRedirectAction';
 
 const registerForm = jquery('#register-form');
+const formErrors = jquery('#form-errors');
+
+function hideError () {
+    formErrors.html();
+}
+
+function showError (err) {
+    formErrors.html(`
+        <div class="alert alert-danger">
+            ${err.message}
+        </div>
+    `);
+}
 
 registerForm.submit(function (e) {
     e.preventDefault();
+    hideError();
 
     const username = jQuery('#email-input').val();
     const password = jQuery('#password-input').val();
@@ -48,7 +62,7 @@ registerForm.submit(function (e) {
     })
     .subscribe(function (message) {
         console.log(message);
-    });
+    }, showError);
 
 
 });

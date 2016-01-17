@@ -21,7 +21,7 @@ module.exports = function (req) {
                     return {
                         header: {
                             title: 'Register',
-                            stylesheet: '/styles/register.css'
+                            stylesheet: '/public/styles/register.css'
                         },
                         body: {
                             bodyClassHook: 'page-register',

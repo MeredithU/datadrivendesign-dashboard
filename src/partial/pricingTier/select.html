@@ -1,9 +1,10 @@
 <div class="col-xs-12 col-sm-6">
     <input class="hide" id="checkbox-dev-pricing" type="radio" name="pricing" value="{{pricingTier.DEV}}" checked="checked" />
-    <section class="text-center pricing-tier-summary label-box">
+    <section class="text-center pricing-tier-summary label-box box-wire">
         <label for="checkbox-dev-pricing"></label>
-        <h3 class="title-pricing-tier">Developer</h3>
-        <h4 class="price-pricing-tier">Free</h4>
+        <h4 class="price-pricing-tier">Developer</h4>
+        <h3 class="title-pricing-tier">Free <small></small></h3>
+        <hr />
         <p>
             Run up to 5 A/B Tests Immediately<br />
             No Credit Card Required
@@ -12,10 +13,14 @@
 </div>
 <div class="col-xs-12 col-sm-6">
     <input class="hide" id="checkbox-pro-pricing" type="radio" name="pricing" value="{{pricingTier.PRO}}" />
-    <section class="text-center pricing-tier-summary label-box">
+    <section class="text-center pricing-tier-summary label-box box-wire">
         <label for="checkbox-pro-pricing"></label>
-        <h3 class="title-pricing-tier">Professional</h3>
-        <h4 class="price-pricing-tier">$49.99 <small>per 1,000 unique impressions</small></h4>
+        <h4 class="price-pricing-tier">Professional</h4>
+        <h3 class="title-pricing-tier">
+            $49.99
+            <small>per 1,000 unique impressions</small>
+        </h3>
+        <hr />
         <p>
             Run unlimited A/B Tests<br />
             Pay only for what you use

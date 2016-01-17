@@ -22,6 +22,16 @@ export default function (path, params = {}) {
         urlConfig.pathname = basePath + path;
 
         return requestUrl(urlConfig, params);
+    })
+    .flatMapLatest((resp) => {
+        return rx.Observable.create(function (o) {
+            if (resp.error) {
+                o.onError(resp.error);
+            }
+
+            o.onNext(resp);
+            o.onCompleted();
+        });
     });
 
 };

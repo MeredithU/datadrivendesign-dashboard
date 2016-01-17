@@ -17,12 +17,24 @@
 }
 
 .page-register input:checked + .label-box {
-    background: #ccc;
+    background:rgba(39, 78, 125, 0.1);
+    border:1px solid #04346c;
+}
+
+.page-register input:checked + .label-box hr {
+    border-color:#666;
 }
 
 .page-register input[type=submit] {
-    margin-bottom:20px;
     width:100%;
+}
+
+.page-register .user-form > div {
+    margin-bottom:20px;
+}
+
+.page-register .user-form > .row-submit {
+    margin-bottom:0;
 }
 
 .page-register .pricing-tier-summary {
@@ -30,7 +42,15 @@
 }
 
 .page-register .title-pricing-tier {
+    color:#274E7D;
+    font-size:3em;
     margin-top:0;
+}
+
+.page-register .title-pricing-tier small {
+    display:block;
+    font-size:0.9rem;
+    min-height:0.9rem;
 }
 
 .page-register .form-register-input-group {

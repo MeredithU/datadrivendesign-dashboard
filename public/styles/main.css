@@ -1,7 +1,7 @@
 /* http://colorschemedesigner.com/csd-3.5/#3C21Tw0w0w0w0 */
 html, body {
     background:#fff;
-    color: #333;
+    color: #666;
     font-size:16px;
     height:100%;
 }
@@ -156,10 +156,6 @@ form input {
 
 .header-nav .btn {
     margin-top:-4px;
-}
-
-.user-form > div {
-    margin-bottom:20px;
 }
 
 .text-right {
@@ -396,6 +392,37 @@ input[type=submit] {
 
 .cell-heading.big {
     font-size:2em;
+}
+
+.btn-wire {
+    border:1px solid #b1b1b1;
+    color: #666;
+}
+
+.btn-wire:active {
+    box-shadow:none;
+}
+
+.pipe {
+    display:block;
+    width:1px;
+    background:#b1b1b1;
+}
+
+.box-wire {
+    border-radius:4px;
+    border:1px solid #b1b1b1;
+    color: #666;
+}
+
+.btn-wire:hover {
+    border-color:#04346c;
+    color:#04346c;
+}
+
+.piped.piped-default .pipe {
+    height:2em;
+    margin:15px auto;
 }
 
 /* Extra Small Devices, Phones */
