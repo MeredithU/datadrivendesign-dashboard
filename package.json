@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "build": "npm run clean && npm install && jspm install && mkdir ./dist && cp -R ./src/ ./dist/src && cp -R ./public ./dist/public && rm -rf ./dist/public/jspm_packages && rm ./dist/public/dashboard.js && cp ./server.js ./dist/server.js && mkdir ./dist/public/jspm_packages && cp ./public/jspm_packages/system.js ./dist/public/jspm_packages/system.js && node ./tasks/deploy/createServicesConfigFile.js && jspm bundle-sfx --skip-source-maps ./public/dashboard.js ./dist/public/dashboard.js && cp ./package.json ./dist/package.json",
+    "build": "npm run clean && npm install && jspm install && mkdir ./dist && cp -R ./src/ ./dist/src && cp -R ./public ./dist/public && rm -rf ./dist/public/jspm_packages && rm ./dist/public/dashboard.js && cp ./server.js ./dist/server.js && mkdir ./dist/public/jspm_packages && cp ./public/jspm_packages/system.js ./dist/public/jspm_packages/system.js && node ./tasks/deploy/createServicesConfigFile.js && node ./tasks/deploy/createJavascriptArtifacts.js && cp ./package.json ./dist/package.json && cd dist && npm install",
     "clean": "rm -rf ./dist && rm -rf ./node_modules && rm -rf ./public/jspm_packages",
     "start": "forever start --spinSleepTime 10000 server.js",
     "stop": "forever stop ./server.js",
@@ -41,12 +41,14 @@
     }
   },
   "devDependencies": {
+    "glob": "^6.0.4",
     "jspm-server": "^1.0.1"
   },
   "dependencies": {
     "express": "^4.13.3",
     "forever": "^0.15.1",
     "jspm": "^0.16.19",
+    "lodash": "^4.0.0",
     "mustache": "^2.2.1",
     "numeral": "^1.5.3",
     "request": "^2.67.0",
