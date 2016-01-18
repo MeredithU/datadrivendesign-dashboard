@@ -1,0 +1,140 @@
+.page-welcome .page-header {
+    padding-bottom:9px;
+}
+
+.page-welcome .hero {
+    font-size:3.2em;
+    padding:30px 0 100px;
+    position:relative;
+    z-index:10;
+}
+
+.page-welcome .hero .logo {
+    margin-top:30px;
+    margin-left:30px;
+    max-width:256px;
+    max-height:256px;
+}
+
+.page-welcome .main .glyphicon {
+    font-size:96px;
+}
+
+.page-welcome .main .section-title {
+    font-size:2.2rem;
+}
+
+.page-welcome .pricing-compare-chart {
+    margin-bottom:50px;
+}
+
+.page-welcome .pricing-compare-chart .row {
+    padding:10px 0;
+    margin:5px 0;
+    border-bottom:1px solid #e1e1e1;
+}
+
+.page-welcome .pricing-compare-chart .feature-col {
+    vertical-align:middle;
+    font-size:1.2em;
+}
+
+.page-welcome .pricing-compare-chart .compare-col .glyphicon {
+    font-size:2em;
+}
+
+.page-welcome .section {
+    margin-bottom:50px;
+}
+
+.page-welcome .section-how-it-works {
+    background:#e1e1e1;
+    padding-bottom:50px;
+}
+
+.page-welcome .section-how-it-works .lead {
+    margin-bottom:45px;
+}
+
+.page-welcome .section-how-it-works .cell-heading {
+    margin-bottom:25px;
+}
+
+.page-welcome .section-title {
+    color:#333;
+    font-size:1.1em;
+    text-transform:uppercase;
+    margin-top:50px;
+    margin-bottom:40px;
+}
+
+.page-welcome .feature-list {
+    list-style-type:none;
+    padding-left:0;
+    font-size:1.1em;
+}
+
+.page-welcome .feature .feature-title {
+    border-bottom:1px solid #b1b1b1;
+    padding-bottom:10px;
+}
+
+.page-welcome .feature .cell-heading {
+    color: #A63C00;
+}
+
+.page-welcome .feature-list li {
+    margin-left:0;
+    padding:5px 0;
+    border-bottom:1px solid #e1e1e1;
+}
+
+.page-welcome .feature-list li:last-child {
+    border-bottom:0;
+}
+
+.page-welcome .figure figcaption {
+    margin-bottom:15px;
+}
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+    .page-welcome .hero {
+        font-size:3em;
+    }
+
+    .page-welcome .compare-col {
+        margin-top:20px;
+    }
+
+    .page-welcome .compare-col .label-pricing-tier {
+        color:#b1b1b1;
+        display:block;
+        margin-bottom:5px;
+    }
+
+    .page-welcome .feature {
+        margin-bottom:50px;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 481px) and (max-width : 767px) {
+    .page-welcome .hero {
+        font-size:3em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .page-welcome .hero-copy {
+        margin-left:20px;
+    }
+
+
+    .page-welcome .hero {
+        padding-right:20px;
+        font-size:3.5em;
+        padding-bottom:60px;
+    }
+}

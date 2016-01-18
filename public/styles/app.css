@@ -1,0 +1,3 @@
+.page-app .app-body {
+    min-height:calc(100% - 149px);
+}

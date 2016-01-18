@@ -13,6 +13,7 @@ module.exports = function (req) {
             return {
                 header: {
                     title: 'A/B Test Dashboard',
+                    stylesheet: '/public/styles/app.css'
                 },
                 body: {
                     bodyClassHook: 'page-app',

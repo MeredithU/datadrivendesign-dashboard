@@ -13,9 +13,10 @@ module.exports = function (req) {
             return {
                 header: {
                     title: 'A/B Testing',
+                    stylesheet: 'public/styles/home.css'
                 },
                 body: {
-                    bodyClassHook: 'page-index',
+                    bodyClassHook: 'page-welcome',
                     contents: contents
                 },
                 footer: {}
