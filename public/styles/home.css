@@ -117,6 +117,10 @@
     .page-welcome .feature {
         margin-bottom:50px;
     }
+
+    .page-welcome .how-it-works-step {
+        margin-top:50px;
+    }
 }
 
 /* Small Devices, Tablets */
