@@ -2,6 +2,7 @@
 
 import rx from 'rx';
 import React from 'react';
+import numeral from 'numeral';
 
 import queryAllPricingTiers from 'turissini/queries/pricingTier/allPricingTiers';
 import queryUserPricingTier from 'turissini/queries/user/getPricing';
@@ -52,23 +53,72 @@ export default function (req) {
             .map((pricingTier, index) => {
                 const key = `tier-${index}`;
                 const isUserPricingTier = (userPricingTier.get('id') === pricingTier.get('id'));
+                const inputId = `checkbox-${pricingTier.get('label')}-pricing`;
+                const price = pricingTier.get('price_per_unit');
+                let priceStr = price;
+
+                if (price === 0) {
+                    priceStr = (
+                        <span>
+                            Free <small></small>
+                        </span>
+                    )
+                } else {
+                    const num = numeral(price).format('$0,0.00');
+                    priceStr = (
+                        <span>
+                            {num} <small>per 1,000 Impressions</small>
+                        </span>
+                    )
+                }
+
+                function onInputChange () {
+                    onUserPricingTierChange(pricingTier);
+                }
+
 
                 return (
-                    <div key={key}>
-                        <input onChange={function () {
-                            onUserPricingTierChange(pricingTier);
-                        }} type="radio" checked={isUserPricingTier} />
-                        {pricingTier.get('label')}
+                    <div className="col-xs-12 col-xs-6" key={key}>
+                        <input id={inputId} className="hide" onChange={onInputChange} type="radio" checked={isUserPricingTier} />
+                        <section className="text-center pricing-tier-summary label-box box-wire">
+                            <label htmlFor={inputId}></label>
+                            <h4 className="price-pricing-tier text-capitalize">{pricingTier.get('label')}</h4>
+                            <h3 className="title-pricing-tier">{priceStr}</h3>
+                        </section>
                     </div>
                 );
             })
             .toArray()
             .map((components) => {
                 return (
-                    <Form onSubmit={onSubmit}>
-                        {components}
-                        <input className="btn btn-primary" type="submit" value="Update" />
-                    </Form>
+                    <div>
+                        <div className="row">
+                            <div className="col-xs-12">
+                                <h3>Current charges: $0.00</h3>
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-xs-12">
+                                    <h4>
+                                        Change your Billing Plan
+                                    </h4>
+                                </div>
+                            </div>
+                            <Form onSubmit={onSubmit}>
+                                <div className="row pricing-tiers-row">
+                                    {components}
+                                </div>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-xs-12 text-center">
+                                        <input className="btn btn-primary" type="submit" value="Update Billing Plan" />
+                                    </div>
+                                </div>
+                            </Form>
+                        </div>
+                    </div>
                 )
             })
     });

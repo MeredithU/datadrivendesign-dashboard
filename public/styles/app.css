@@ -1,3 +1,22 @@
 .page-app .app-body {
     min-height:calc(100% - 149px);
 }
+
+.page-app .title-pricing-tier {
+    color:#274E7D;
+    font-size:1.2em;
+    margin-top:0;
+}
+
+.page-app .title-pricing-tier small {
+    display:block;
+    font-size:0.9rem;
+    min-height:0.9rem;
+}
+
+
+.page-app .pricing-tiers-row {
+    font-size:1em;
+    margin-top:25px;
+    margin-bottom:25px;
+}

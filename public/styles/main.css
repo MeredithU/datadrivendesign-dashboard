@@ -6,6 +6,7 @@ html, body {
     height:100%;
 }
 
+
 .bg-blue {
     background:#04346c;
     color:#fff;
@@ -423,6 +424,34 @@ input[type=submit] {
 .piped.piped-default .pipe {
     height:2em;
     margin:15px auto;
+}
+
+
+.label-box {
+    position: relative;
+}
+
+.label-box > input {
+    display:none;
+}
+
+.label-box > label {
+    cursor:pointer;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:10;
+}
+
+input:checked + .label-box {
+    background:rgba(39, 78, 125, 0.1);
+    border:1px solid #04346c;
+}
+
+input:checked + .label-box hr {
+    border-color:#666;
 }
 
 
